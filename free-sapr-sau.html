@@ -574,8 +574,12 @@ function draw3x3() {if (iteku==ipred && jteku==jpred || mode=='solve' && jteku>=
   jpredm1=jpred-1;
   if(ipred-1<0)ipredm1=0;
   if(jpred-1<0)jpredm1=0;
-    for(i=ipredm1;i<=ipred+2;i++)//70
-      for(j=jpredm1;j<=jpred+2;j++){//50
+  ipredp2=ipred+2;
+  jpredp2=jpred+2;
+  if(ipred+2>49)ipredp2=49;
+  if(jpred+2>49)jpredp2=49;
+    for(i=ipredm1;i<=ipredp2;i++)//70
+      for(j=jpredm1;j<=jpredp2;j++){//50
 	ilev=i;jverh=j;
 	mij=matrix[i][j];
 	if(mij>=40){
