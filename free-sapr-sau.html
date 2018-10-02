@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>САПР САУ онлайн бесплатно. Automatic control system CAD, online, free</title>
+    <script type="text/javascript">
+	
+	var matrix = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,67,67,67, 0, 0, 0,70,70,70, 0,42,42,42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,67,67,67, 0, 0, 0,70,70,70, 0,42,42,42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,67,67,67, 0, 1, 0,70,70,70, 0,42,42,42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0,15, 0, 0, 0, 0, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0,31,14, 2, 2, 5, 0, 0, 0, 0,70,70,70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,68,68,68, 0, 2, 0,71,71,71, 0,43,43,43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0,15, 0, 0, 0, 1, 0, 0, 0, 0,70,70,70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,68,68,68, 0, 0, 0,71,71,71, 0,43,43,43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,70,70,70, 0, 0, 1, 0, 0, 0, 0,70,70,70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,68,68,68, 0, 3, 0,71,71,71, 0,43,43,43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,70,70,70, 0, 0, 1, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,70,70,70, 0,40,40,40, 0, 0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0,40,40,40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0,15, 0, 0,40,40,40, 0, 0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,40,40,40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,71,71,71, 0,40,40,40, 0, 0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0,40,40,40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,71,71,71, 0, 0,16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,71,71,71, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 6, 0,41,41,41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 9, 2, 2, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 0, 0,41,41,41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,90,90,90, 0, 7, 0,41,41,41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,91,91,91, 0, 8, 0,72,72,72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0,67,67,67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,91,91,91, 0, 0, 0,72,72,72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,91,91,91, 0, 9, 0,72,72,72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,92,92,92, 0,10, 0,73,73,73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,92,92,92, 0, 0, 0,73,73,73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,92,92,92, 0,11, 0,73,73,73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+];
+
+      function draw() {
+          if(mode=='edit')jmax=50;else{ jmax=32; ctx.fillStyle = "white"; ctx.fillRect(0, 650, 1500, 1000);
+	     ctx.fillStyle = "black"; ctx.font = '15px serif';ctx.fillText('Δt='+dt, 10, 685);ctx.fillText('T='+T, 10, 665);
+	     for(k=1;k<=kolvo_blokov;k++){
+		bloki[k].draw_parameters(k);
+	     }
+	  }
+	  ctx.strokeStyle = "black";
+	  for(i=0;i<50;i++)//50
+	    for(j=0;j<jmax;j++){//50
+	      mij=matrix[i][j];
+	      if(mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
+	       && mij==matrix[i][j+2] && mij==matrix[i+1][j+2] && mij==matrix[i+2][j+2]){
+	        ctx.strokeRect(i*30+1, j*20+1, 88, 58);
+		draw_block(i,j,matrix[i][j],"white");
+	      }
+	      if(matrix[i][j]<=33){
+	        if(mode=='edit')draw_block(i,j,matrix[i][j],"pink");
+		else draw_block(i,j,matrix[i][j],"white");
+	      }
+	      //if(matrix[i][j]<=33)draw_block(i,j,matrix[i][j],ctx,"white");
+	    }
+	    if(naidena_oshibka){naiti_ilev1_jverh1(ioshibki,joshibki);draw_block(ilev1,jverh1,matrix[ioshibki][joshibki],"red");}
+	  ctx.beginPath();
+	  ctx.moveTo(0,650);
+	  ctx.lineTo(1500,650);
+	  ctx.stroke();
+      }
+function draw_nomer_bloka(i,j){
+	for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[i][j] && bloki[k].i==i && bloki[k].j==j){
+		ctx.fillStyle = "black"; ctx.font = '12px serif'; ctx.fillText(k, i*30+76, j*20+11);
+	}
+}
+function draw_block(i,j,block,color) {
+  
+  ctx.fillStyle = color;
+  if(block>=40){ctx.fillRect(i*30+1, j*20+1, 88, 58);draw_nomer_bloka(i,j);}
+  else if(mode=='edit')ctx.fillRect(i*30, j*20, 30, 20);
+	else if(j<32 && mode!='Xott')ctx.fillRect(i*30, j*20, 30, 20);
+  ctx.fillStyle = "black";
+
+  switch(block) {
+
+
+  case 1://'lp':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.stroke();
+    break;
+    
+  case 2://'vn':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.stroke();
+    break;
+    
+  case 3://'levo-verh':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.stroke();
+    break;
+    
+  case 4://'levo-niz':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.stroke();
+    break;
+    
+  case 5://'pravo-verh':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.stroke();
+    break;
+    
+  case 6://'pravo-niz':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.stroke();
+    break;
+
+  case 7://'krest':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.stroke();
+    break;
+    
+  case 8://'krest_s_tochkoi':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,2,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+  case 9://'otvetvl_vniz':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,2,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+  case 10://'otvetvl_vverh':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,2,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+  case 11://'otvetvl_vpravo':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+20);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,2,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+  case 12://'otvetvl_vlevo':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.lineTo(i*30,j*20+10);
+	  ctx.moveTo(i*30+15,j*20+20);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,2,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+  case 13://'strelka_vniz':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  //ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+18,j*20+7);
+	  ctx.lineTo(i*30+12,j*20+7);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.stroke();
+    break;
+    
+  case 14://'strelka_vverh':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+15,j*20+20);
+	  ctx.moveTo(i*30+15,j*20);
+	  ctx.lineTo(i*30+18,j*20+13);
+	  ctx.lineTo(i*30+12,j*20+13);
+	  ctx.lineTo(i*30+15,j*20);
+	  ctx.stroke();
+    break;
+    
+  case 15://'strelka_vpravo':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.lineTo(i*30+10,j*20+7);
+	  ctx.lineTo(i*30+10,j*20+13);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.stroke();
+    break;
+    
+  case 16://'strelka_vlevo':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+30,j*20+10);
+	  ctx.moveTo(i*30,j*20+10);
+	  ctx.lineTo(i*30+20,j*20+7);
+	  ctx.lineTo(i*30+20,j*20+13);
+	  ctx.lineTo(i*30,j*20+10);
+	  ctx.stroke();
+    break;
+    
+   case 30://'summator':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+7,j*20+3);
+	  ctx.lineTo(i*30+23,j*20+17);
+	  ctx.moveTo(i*30+23,j*20+3);
+	  ctx.lineTo(i*30+7,j*20+17);
+	  ctx.moveTo(i*30+25,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,0,Math.PI*2,true);
+	  ctx.stroke();
+    break;
+    
+   case 31://'summator_s_minusom_snizu':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+7,j*20+3);
+	  ctx.lineTo(i*30+23,j*20+17);
+	  ctx.moveTo(i*30+23,j*20+3);
+	  ctx.lineTo(i*30+7,j*20+17);
+	  ctx.moveTo(i*30+25,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,0,Math.PI*2,true);
+	  ctx.stroke();
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,Math.PI*3/4,Math.PI/4,true);
+	  ctx.fill();
+    break;
+    
+   case 32://'summator_s_minusom_sverhu':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+7,j*20+3);
+	  ctx.lineTo(i*30+23,j*20+17);
+	  ctx.moveTo(i*30+23,j*20+3);
+	  ctx.lineTo(i*30+7,j*20+17);
+	  ctx.moveTo(i*30+25,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,0,Math.PI*2,true);
+	  ctx.stroke();
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,Math.PI*5/4,Math.PI*7/4,false);
+	  ctx.fill();
+    break;
+    
+   case 33://'summator_s_minusom_snizu_i_sverhu':
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+25,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,0,Math.PI*2,true);
+	  ctx.stroke();
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,Math.PI*5/4,Math.PI*7/4,false);
+	  ctx.moveTo(i*30+15,j*20+10);
+	  ctx.arc(i*30+15,j*20+10,10,Math.PI*3/4,Math.PI/4,true);
+	  ctx.fill();
+  break;
+    
+  case 40://'K':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('K', i*30+40, j*20+35);
+  break;
+    
+        
+  case 41://'differentsiator':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('p', i*30+40, j*20+35);
+  break;
+    
+  case 42://'K_s_ogranicheniem':  
+	  ctx.font = '16px serif';
+	  ctx.beginPath();
+
+	  //ctx.fillText('y', i*30+32, j*20+15);
+	  //ctx.fillText('x', i*30+80, j*20+45);
+	  
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+27);
+	  ctx.lineTo(i*30+70,j*20+33);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+45,j*20+55);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  ctx.lineTo(i*30+48,j*20+18);
+	  ctx.lineTo(i*30+42,j*20+18);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  
+	  ctx.moveTo(i*30+3,j*20+55);
+	  ctx.lineTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+45,j*20+30);
+	  ctx.lineTo(i*30+65,j*20+5);
+	  ctx.lineTo(i*30+87,j*20+5);
+	  
+	  ctx.fillText('b', i*30+48, j*20+13);
+	  ctx.fillText('a', i*30+60, j*20+28);
+	  ctx.fillText('d', i*30+33, j*20+55);
+	  ctx.fillText('c', i*30+13, j*20+41);
+
+	  ctx.stroke();
+    break;
+    
+    case 43://'ogranichenie':  
+	  ctx.font = '16px serif';
+	  ctx.beginPath();
+
+	  //ctx.fillText('y', i*30+32, j*20+15);
+	  //ctx.fillText('x', i*30+80, j*20+45);
+	  
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+27);
+	  ctx.lineTo(i*30+70,j*20+33);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+45,j*20+55);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  ctx.lineTo(i*30+48,j*20+18);
+	  ctx.lineTo(i*30+42,j*20+18);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  
+	  ctx.moveTo(i*30+3,j*20+55);
+	  ctx.lineTo(i*30+45,j*20+55);
+	  ctx.moveTo(i*30+45,j*20+5);
+	  ctx.lineTo(i*30+77,j*20+5);
+	  
+	  ctx.fillText('a', i*30+48, j*20+16);
+	  ctx.fillText('b', i*30+46, j*20+55);
+
+	  ctx.stroke();
+    break;
+    
+  case 67://'Xott':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('x', i*30+3, j*20+15);
+	  ctx.fillText('t', i*30+80, j*20+45);
+	  ctx.beginPath();
+	  if(byl_raschiot){
+	    var xmax=0,xmin=0;
+	    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[i][j] && bloki[k].i==i && bloki[k].j==j){
+	      Tnadt=T/dt;
+	      for(t=0;t<Tnadt;t++){if(xmax<bloki[k].X[t])xmax=bloki[k].X[t];if(xmin>bloki[k].X[t])xmin=bloki[k].X[t];}
+	      ctx.moveTo(i*30,j*20+60-60*(0-xmin)/(xmax-xmin));ctx.lineTo(i*30+90,j*20+60-60*(0-xmin)/(xmax-xmin));//рисуем ось x
+	      ctx.moveTo(i*30,j*20+60);
+	      for(t=0;t<Tnadt;t++)ctx.lineTo(i*30+t*90/Tnadt,j*20+60-60*(bloki[k].X[t]-xmin)/(xmax-xmin));
+	    }
+	  }else{
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+27);
+	  ctx.lineTo(i*30+70,j*20+33);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.lineTo(i*30+18,j*20+18);
+	  ctx.lineTo(i*30+12,j*20+18);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  }
+	  ctx.stroke();
+	 
+    break;
+    
+  case 68://'fazovaya_ploskosti':  
+	  ctx.font = '16px serif';
+	  ctx.beginPath();
+	  if(byl_raschiot){
+	    var xmax=0,xmin=0,ymax=0,ymin=0;
+	    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[i][j] && bloki[k].i==i && bloki[k].j==j){
+	      Tnadt=T/dt;
+	      blokik=bloki[k];
+	      
+	      for(t=1;t<Tnadt;t++){if(xmax<blokik.X[t])xmax=blokik.X[t];if(xmin>blokik.X[t])xmin=blokik.X[t];	d=blokik.X[t]-blokik.X[t-1];	if(ymax<d)ymax=d;if(ymin>d)ymin=d;}
+	      ctx.moveTo(i*30+90*(0-xmin)/(xmax-xmin),j*20);ctx.lineTo(i*30+90*(0-xmin)/(xmax-xmin),j*20+60);//рисуем ось y
+	      ctx.moveTo(i*30,j*20+60-60*(0-ymin)/(ymax-ymin));ctx.lineTo(i*30+90,j*20+60-60*(0-ymin)/(ymax-ymin));//рисуем ось x
+	      ctx.moveTo(i*30+90*(blokik.X[1]-xmin)/(xmax-xmin),j*20+60-60*(blokik.X[1]-blokik.X[0]-ymin)/(ymax-ymin));
+	      for(t=1;t<Tnadt;t++)ctx.lineTo(i*30+90*(blokik.X[t]-xmin)/(xmax-xmin),j*20+60-60*(blokik.X[t]-blokik.X[t-1]-ymin)/(ymax-ymin));
+	    }
+	  }else{
+	  ctx.fillText('x', i*30+32, j*20+15);
+	  ctx.fillText('x', i*30+80, j*20+45);
+	  ctx.moveTo(i*30+35,j*20+5);
+	  ctx.lineTo(i*30+37,j*20+5);
+	  
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+27);
+	  ctx.lineTo(i*30+70,j*20+33);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+45,j*20+55);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  ctx.lineTo(i*30+48,j*20+18);
+	  ctx.lineTo(i*30+42,j*20+18);
+	  ctx.lineTo(i*30+45,j*20+5);
+	  }
+	  ctx.stroke();
+    break;
+    
+  case 70://'inertsionnoe_zveno':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('K', i*30+40, j*20+25);
+	  ctx.fillText('Tp+1', i*30+28, j*20+47);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+20,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+30);
+	  ctx.stroke();
+    break;
+    
+  case 71://'integrator':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('K', i*30+40, j*20+25);
+	  ctx.fillText('p', i*30+40, j*20+45);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+20,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+30);
+	  ctx.stroke();
+    break;
+    
+  case 72://'kolebatelnoe_zveno':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('K', i*30+40, j*20+25);
+	  ctx.fillText('ap +bp+1', i*30+18, j*20+47);
+	  ctx.font = '10px serif';
+	  ctx.fillText('2', i*30+33, j*20+40);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+20,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+30);
+	  ctx.stroke();
+    break;
+    
+    case 73://'zveno_3go_poriadka':  
+	  ctx.font = '15px serif';
+	  ctx.fillText('K', i*30+40, j*20+25);
+	  ctx.fillText('ap +bp +cp+1', i*30+3, j*20+47);
+	  ctx.font = '10px serif';
+	  ctx.fillText('3', i*30+16, j*20+40);
+	  ctx.fillText('2', i*30+44, j*20+40);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+10,j*20+30);
+	  ctx.lineTo(i*30+80,j*20+30);
+	  ctx.stroke();
+    break;
+
+    
+  case 90://'Const':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('C', i*30+2, j*20+35);
+	  ctx.fillText('t', i*30+80, j*20+50);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+85,j*20+55);
+	  ctx.lineTo(i*30+70,j*20+52);
+	  ctx.lineTo(i*30+70,j*20+58);
+	  ctx.lineTo(i*30+85,j*20+55);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.lineTo(i*30+18,j*20+18);
+	  ctx.lineTo(i*30+12,j*20+18);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.stroke()
+    break;
+    
+  case 91://'sinAt':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('sin(At)', i*30+20, j*20+12);
+	  ctx.fillText('t', i*30+80, j*20+25);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+15,j*20+30);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  ctx.lineTo(i*30+70,j*20+27);
+	  ctx.lineTo(i*30+70,j*20+33);
+	  ctx.lineTo(i*30+85,j*20+30);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.lineTo(i*30+18,j*20+18);
+	  ctx.lineTo(i*30+12,j*20+18);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  
+	  for(t=0;t<Math.PI*4;t=t+Math.PI*4/70)ctx.lineTo(i*30+15+t/(Math.PI*4)*70,j*20+30-17*Math.sin(t));
+	  ctx.stroke()
+    break;
+    
+  case 92://'delta':  
+	  ctx.font = '16px serif';
+	  ctx.fillText('C', i*30+2, j*20+35);
+	  ctx.fillText('delta', i*30+25, j*20+35);
+	  ctx.fillText('t', i*30+80, j*20+50);
+	  ctx.beginPath();
+	  ctx.moveTo(i*30+20,j*20+30);
+	  ctx.lineTo(i*30+20,j*20+55);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+85,j*20+55);
+	  ctx.lineTo(i*30+70,j*20+52);
+	  ctx.lineTo(i*30+70,j*20+58);
+	  ctx.lineTo(i*30+85,j*20+55);
+	  
+	  ctx.moveTo(i*30+15,j*20+55);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.lineTo(i*30+18,j*20+18);
+	  ctx.lineTo(i*30+12,j*20+18);
+	  ctx.lineTo(i*30+15,j*20+5);
+	  ctx.stroke()
+    break;
+  }
+}
+
+function draw3x3() {if (iteku==ipred && jteku==jpred || mode=='solve' && jteku>=30 || mode=='Xott' )return;
+  ctx.strokeStyle = "black";
+    for(i=ipred;i<=ipred+2;i++)//70
+      for(j=jpred;j<=jpred+2;j++){//50
+	ilev=i;jverh=j;
+	mij=matrix[i][j];
+	if(mij>=40){
+	  if(mij==matrix[i-1][j])ilev=i-1;
+	  if(mij==matrix[i-1][j] && mij==matrix[i-2][j])ilev=i-2;
+	  if(mij==matrix[i][j-1])jverh=j-1;
+	  if(mij==matrix[i][j-1] && mij==matrix[i][j-2])jverh=j-2;
+	  ctx.strokeRect(ilev*30+1, jverh*20+1, 88, 58);
+	  draw_block(ilev,jverh,matrix[i][j],"white");
+	}
+	if(matrix[i][j]<=33){
+		if(mode=='edit')draw_block(i,j,matrix[i][j],"pink");
+		else draw_block(i,j,matrix[i][j],"white");
+	}
+      }
+      ctx.beginPath();
+      ctx.moveTo(0,650);
+      ctx.lineTo(1500,650);
+      ctx.stroke();
+}
+
+     
+function udaliti_block(i3,j3){
+  if(matrix[i3][j3]>=40){ilev=i3;jverh=j3;
+    if(matrix[i3][j3]==matrix[i3-1][j3])ilev=i3-1;
+    if(matrix[i3][j3]==matrix[i3-1][j3] && matrix[i3][j3]==matrix[i3-2][j3])ilev=i3-2;
+    if(matrix[i3][j3]==matrix[i3][j3-1])jverh=j3-1;
+    if(matrix[i3][j3]==matrix[i3][j3-1] && matrix[i3][j3]==matrix[i3][j3-2])jverh=j3-2;
+    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev][jverh] && bloki[k].i==ilev && bloki[k].j==jverh){ delete bloki[k];
+      for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
+    }
+    kolvo_blokov--;
+    for(i4=ilev;i4<=ilev+2;i4++)for(j4=jverh;j4<=jverh+2;j4++)matrix[i4][j4]=0;
+  }
+  if(matrix[i3][j3]>=30 && matrix[i3][j3]<=33){
+    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[i3][j3] && bloki[k].i==i3 && bloki[k].j==j3){ 
+      delete bloki[k];
+      for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
+    }
+    kolvo_blokov--;
+    matrix[i3][j3]=0;
+  }
+}
+
+function clicknuli(i1,j1){
+  if(mode=='edit'){
+	  if(j1>29){teku_block=matrix[i1][j1];draw();draw_block(i1,j1,teku_block,'lightblue');}
+	  if((j1<=29 && teku_block>=40) || (j1<=31 && teku_block<40)){ 
+		if(teku_block<30){ udaliti_block(i1,j1); matrix[i1][j1]=teku_block;}
+		if(teku_block<=33 && teku_block>=30){ 
+		  for(i2=i1-1;i2<i1+2;i2++)for(j2=j1-1;j2<j1+2;j2++)if(matrix[i2][j2]>=30)udaliti_block(i2,j2);
+		  matrix[i1][j1]=teku_block;
+		  create_block(i1,j1,teku_block);
+		}
+		if(teku_block>=40){
+		  for(i2=i1-1;i2<i1+4;i2++)for(j2=j1-1;j2<j1+4;j2++)if(matrix[i2][j2]>=30)udaliti_block(i2,j2);
+		  for(i2=i1;i2<=i1+2;i2++)for(j2=j1;j2<=j1+2;j2++)matrix[i2][j2] = teku_block;
+		  create_block(i1,j1,teku_block);
+		}
+		save_scheme_in_localStorage();
+	     }
+	  if(j1<=29)draw();
+  }
+  
+  if(mode=='solve'){
+    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype>=40 && bloki[k].i+2>=iteku && bloki[k].i<=iteku && bloki[k].j+2>=jteku && bloki[k].j<=jteku)bloki[k].vvod(k);
+    mymousedown=false;
+  }else if( mode=='Xott' ){mode='solve';draw();show_run(); }
+}
+function draw_link(){if(jteku>29)return;
+  if(iteku==ipred && jteku<jpred){for(j5=jteku;j5<=jpred;j5++)if(matrix[iteku][j5]<30)matrix[iteku][j5]=2;else if(matrix[iteku][j5+1]<30)matrix[iteku][j5+1]=14;teku_block=2;}
+  if(iteku==ipred && jteku>jpred){for(j5=jteku;j5>=jpred;j5--)if(matrix[iteku][j5]<30)matrix[iteku][j5]=2;else if(matrix[iteku][j5-1]<30)matrix[iteku][j5-1]=13;teku_block=2;}
+  if(iteku<ipred && jteku==jpred){for(i5=iteku;i5<=ipred;i5++)if(matrix[i5][jteku]<30)matrix[i5][jteku]=1;else if(matrix[i5+1][jteku]<30)matrix[i5+1][jteku]=16;teku_block=1;}
+  if(iteku>ipred && jteku==jpred){for(i5=iteku;i5>=ipred;i5--)if(matrix[i5][jteku]<30)matrix[i5][jteku]=1;else if(matrix[i5-1][jteku]<30)matrix[i5-1][jteku]=15;teku_block=1;}
+  
+  if(ipredpred<ipred && iteku==ipred && jteku<jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=3;teku_block=2;}
+  if(ipredpred<ipred && iteku==ipred && jteku>jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=4;teku_block=2;}
+  
+  if(jpredpred<jpred && iteku<ipred && jteku==jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=3;teku_block=1;}
+  if(jpredpred<jpred && iteku>ipred && jteku==jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=5;teku_block=1;}
+  
+  if(ipredpred>ipred && iteku==ipred && jteku<jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=5;teku_block=2;}
+  if(ipredpred>ipred && iteku==ipred && jteku>jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=6;teku_block=2;}
+  
+  if(jpredpred>jpred && iteku<ipred && jteku==jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=4;teku_block=1;}
+  if(jpredpred>jpred && iteku>ipred && jteku==jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=6;teku_block=1;}
+  
+  //if(jpredpred==jpred && iteku>ipred && jteku>jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=4;teku_block=1;}
+  //if(ipredpred==ipred && iteku>ipred && jteku>jpred){if(matrix[ipred][jpred]<30)matrix[ipred][jpred]=5;teku_block=1;}
+}
+
+function create_block(i6,j6,block6){
+  
+  var blok = { i: i6, j: j6, blocktype: block6, Y:0, vhod:0,  }
+  blok.init = function() { }
+  blok.draw_parameters = function(k){ }
+  blok.save_parameters_in_localStorage = function(){ }
+  blok.read_parameters_from_localStorage = function(){ }
+  switch(block6) {
+  case 30:
+	blok.vhodniz = 0;
+	blok.vhodverh = 0;
+	blok.run = function() { this.Y = bloki[this.vhodverh].Y + bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+  break;
+  
+  case 31:
+	blok.vhodniz = 0;
+	blok.vhodverh = 0;
+	blok.run = function() { this.Y = bloki[this.vhodverh].Y - bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+  break;
+  
+  case 32:
+	blok.vhodniz = 0;
+	blok.vhodverh = 0;
+	blok.run = function() { this.Y = -bloki[this.vhodverh].Y + bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+  break;
+  
+  case 33:
+	blok.vhodniz = 0;
+	blok.vhodverh = 0;
+	blok.run = function() { this.Y = -bloki[this.vhodverh].Y - bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+  break;
+  
+  case 40:
+	blok.K = 1;
+	blok.vvod = function() { vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr); 
+				 byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { this.Y = this.K * bloki[this.vhod].Y; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('K='+this.K, 50*k+50, 680);
+	}
+	blok.save_parameters_in_localStorage = function(){ localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K); }
+	blok.read_parameters_from_localStorage = function(){ this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" )); }
+  break;
+  
+  case 41://differentsiator
+	blok.X = 0;
+	blok.run = function() { this.Y = bloki[this.vhod].Y - this.X; this.X = bloki[this.vhod].Y; }
+	blok.init = function() { this.X = 0; }
+  break;
+  
+  case 42://'K_s_ogranicheniem'
+  	blok.a = 1;
+	blok.b = 1;
+	blok.c = -1;
+	blok.d = -1;
+	blok.vvod = function(){ vozvr = prompt('a=', this.a); this.a = vozvr==null ? this.a : isNaN(Number(vozvr))?1:Number(vozvr); 
+				vozvr = prompt('b=', this.b); this.b = vozvr==null ? this.b : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('c=', this.c); this.c = vozvr==null ? this.c : isNaN(Number(vozvr))?-1:Number(vozvr);
+				vozvr = prompt('d=', this.d); this.d = vozvr==null ? this.d : isNaN(Number(vozvr))?-1:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { if(bloki[this.vhod].Y > this.a){ this.Y=this.b; return;}
+				if(bloki[this.vhod].Y > 0){ this.Y = this.b / this.a * bloki[this.vhod].Y; return;}
+				if(bloki[this.vhod].Y > this.c){ this.Y = this.d / this.c * bloki[this.vhod].Y; return;}
+				this.Y=this.d; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('a='+this.a, 50*k+50, 680);
+	  ctx.fillText('b='+this.b, 50*k+50, 700);
+	  ctx.fillText('c='+this.c, 50*k+50, 720);
+	  ctx.fillText('d='+this.d, 50*k+50, 740);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("i"+this.i+"j"+this.j+"c", this.c);
+		localStorage.setItem("i"+this.i+"j"+this.j+"d", this.d);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
+		this.c=Number(localStorage.getItem("i"+this.i+"j"+this.j+"c" ));
+		this.d=Number(localStorage.getItem("i"+this.i+"j"+this.j+"d" ));}
+  break;
+  
+  case 43://'ogranichenie'
+  	blok.a = 1;
+	blok.b = -1;
+	blok.vvod = function(){ vozvr = prompt('a=', this.a); this.a = vozvr==null ? this.a : isNaN(Number(vozvr))?1:Number(vozvr); 
+				vozvr = prompt('b=', this.b); this.b = vozvr==null ? this.b : isNaN(Number(vozvr))?-1:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { if(bloki[this.vhod].Y > 0) this.Y = this.a; 
+				else this.Y=this.b; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('a='+this.a, 50*k+50, 680);
+	  ctx.fillText('b='+this.b, 50*k+50, 700);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));}
+  break;
+  
+  case 67://Xott
+	blok.X = [];
+	blok.run = function() { this.X[t] = bloki[this.vhod].Y; }
+	blok.vvod = function() {
+	   if(byl_raschiot){
+	      var xmax=0,xmin=0; 
+	      mode='Xott';hide_run();
+	      ctx.beginPath();ctx.fillStyle = 'white';ctx.fillRect(0, 0, 1500, 650);
+	      
+	  
+	      Tnadt=T/dt;
+	      for(t=0;t<Tnadt;t++){if(xmax<this.X[t])xmax=this.X[t];if(xmin>this.X[t])xmin=this.X[t];}
+	      ctx.moveTo(0,650-650*(0-xmin)/(xmax-xmin));ctx.lineTo(1500,650-650*(0-xmin)/(xmax-xmin));//рисуем ось x
+	      ctx.moveTo(0,650);
+	      for(t=0;t<Tnadt;t++)ctx.lineTo(t*1500/Tnadt,650-650*(this.X[t]-xmin)/(xmax-xmin));
+	  
+	      ctx.stroke();
+	      ctx.font = '16px serif';ctx.fillStyle = "black";
+	      ctx.fillText('xmax='+xmax, 10, 20);
+	      ctx.fillText('xmin='+xmin, 10, 630);
+	      ctx.fillText('Δt='+dt+'  T='+T, 1350, 630);
+	   }
+	}
+  break;
+  
+  case 68://фазовая плоскость
+	blok.X = [];
+	blok.run = function() { this.X[t] = bloki[this.vhod].Y; }
+	blok.vvod = function() {
+	  if(byl_raschiot){
+	      mode='Xott';hide_run();
+	      ctx.beginPath();ctx.fillStyle = 'white';ctx.fillRect(0, 0, 1500, 650);
+	      var xmax=0,xmin=0,ymax=0,ymin=0;
+	  
+	      Tnadt=T/dt;
+	      blokik=this;
+	      for(t=1;t<Tnadt;t++){if(xmax<blokik.X[t])xmax=blokik.X[t];if(xmin>blokik.X[t])xmin=blokik.X[t];	d=(blokik.X[t]-blokik.X[t-1])/dt;	if(ymax<d)ymax=d;if(ymin>d)ymin=d;}
+	      ctx.moveTo(1500*(0-xmin)/(xmax-xmin),0);ctx.lineTo(1500*(0-xmin)/(xmax-xmin),650);//рисуем ось x
+	      ctx.moveTo(0,650-650*(0-ymin)/(ymax-ymin));ctx.lineTo(1500,650-650*(0-ymin)/(ymax-ymin));//рисуем ось y
+	      ctx.moveTo(1500*(blokik.X[1]-xmin)/(xmax-xmin),650-650*(blokik.X[1]-blokik.X[0]-ymin)/(ymax-ymin));
+	      for(t=1;t<Tnadt;t++)ctx.lineTo(1500*(blokik.X[t]-xmin)/(xmax-xmin),650-650*((blokik.X[t]-blokik.X[t-1])/dt-ymin)/(ymax-ymin));
+	  
+	      ctx.moveTo(14,6);ctx.lineTo(16,6);//рисуем точку над x
+	      ctx.moveTo(14,605);ctx.lineTo(16,605);//рисуем точку над x
+	      ctx.stroke();
+	      ctx.font = '16px serif';ctx.fillStyle = "black";
+	      ctx.fillText('Xmax='+ymax, 10, 20);
+	      ctx.fillText('Xmin='+ymin, 10, 620);
+	      ctx.fillText('Xmax='+xmax, 1350, 630);
+	      ctx.fillText('Xmin='+xmin, 50, 635);
+	  }
+	}
+  break;
+  
+  case 70://"inertsionnoe_zveno"
+	blok.K = 1;
+	blok.T = 1;
+	blok.start_state = 0;
+	blok.vvod = function(){ vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('T=', this.T); this.T = vozvr==null ? this.T : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('start_state=', this.start_state); this.start_state = vozvr==null ? this.start_state : isNaN(Number(vozvr))?0:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { Tnadt=this.T/dt; this.Y = (this.K * bloki[this.vhod].Y + this.Y*Tnadt)/(Tnadt+1); }
+	blok.init = function() { this.Y = this.start_state; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('K='+this.K, 50*k+50, 680);
+	  ctx.fillText('T='+this.T, 50*k+50, 700);
+	  ctx.fillText('ss='+this.start_state, 50*k+50, 720);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("i"+this.i+"j"+this.j+"T", this.T);
+		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
+		this.T=Number(localStorage.getItem("i"+this.i+"j"+this.j+"T" ));
+		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+  break;
+  
+  case 71://"integrator"
+	blok.K = 1;
+	blok.start_state = 0;
+	blok.vvod = function(){ vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr);  
+				vozvr = prompt('start_state=', this.start_state); this.start_state = vozvr==null ? this.start_state : isNaN(Number(vozvr))?0:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() {  this.Y = this.K * bloki[this.vhod].Y *dt + this.Y; }
+	blok.init = function() { this.Y = this.start_state; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('K='+this.K, 50*k+50, 680);
+	  ctx.fillText('ss='+this.start_state, 50*k+50, 700);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
+		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+  break;
+  
+  case 72:
+	blok.K = 1;
+	blok.a = 1;
+	blok.b = 1;
+	blok.start_state = 0;
+	blok.Y0 = 0;
+	blok.vvod = function(){ vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr); 
+				vozvr = prompt('a=', this.a); this.a = vozvr==null ? this.a : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('b=', this.b); this.b = vozvr==null ? this.b : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('start_state=', this.start_state); this.start_state = vozvr==null ? this.start_state : isNaN(Number(vozvr))?0:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { anadt2=this.a/dt/dt; bnadt=this.b/dt; Ytemp = this.Y; this.Y = (this.K * bloki[this.vhod].Y - this.Y0*anadt2 + this.Y*bnadt + 2*this.Y*anadt2)/(anadt2+bnadt+1); this.Y0 = Ytemp; }
+	blok.init = function() { this.Y = this.start_state; this.Y0 = this.start_state; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('K='+this.K, 50*k+50, 680);
+	  ctx.fillText('a='+this.a, 50*k+50, 700);
+	  ctx.fillText('b='+this.b, 50*k+50, 720);
+	  ctx.fillText('ss='+this.start_state, 50*k+50, 740);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
+		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
+		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+  break;
+  
+    case 73:
+	blok.K = 1;
+	blok.a = 1;
+	blok.b = 1;
+	blok.c = 1;
+	blok.start_state = 0;
+	blok.Y0 = 0;
+	blok.Y1 = 0;
+	blok.vvod = function(){ vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr); 
+				vozvr = prompt('a=', this.a); this.a = vozvr==null ? this.a : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('b=', this.b); this.b = vozvr==null ? this.b : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('c=', this.c); this.c = vozvr==null ? this.c : isNaN(Number(vozvr))?1:Number(vozvr);
+				vozvr = prompt('start_state=', this.start_state); this.start_state = vozvr==null ? this.start_state : isNaN(Number(vozvr))?0:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { anadt3=this.a/dt/dt/dt; bnadt2=this.b/dt/dt; cnadt=this.c/dt;
+				Ytemp = this.Y; this.Y = (this.K * bloki[this.vhod].Y + this.Y*anadt3*3 - this.Y1*anadt3*3 + this.Y0*anadt3 + 
+						this.Y*bnadt2*2 - this.Y1*bnadt2 + this.Y*cnadt)/(anadt3+bnadt2+cnadt+1); this.Y0 = this.Y1; this.Y1 = Ytemp;  }
+	blok.init = function() { this.Y = this.start_state; this.Y0 = this.start_state; this.Y1 = this.start_state; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('K='+this.K, 50*k+50, 680);
+	  ctx.fillText('a='+this.a, 50*k+50, 700);
+	  ctx.fillText('b='+this.b, 50*k+50, 720);
+	  ctx.fillText('c='+this.c, 50*k+50, 740);
+	  ctx.fillText('ss='+this.start_state, 50*k+50, 760);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("i"+this.i+"j"+this.j+"c", this.c);
+		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
+		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
+		this.c=Number(localStorage.getItem("i"+this.i+"j"+this.j+"c" ));
+		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+  break;
+  
+  case 90:
+	blok.C = 1;
+	blok.vvod = function() { vozvr = prompt('C=', this.C); this.C = vozvr==null ? this.C : isNaN(Number(vozvr))?1:Number(vozvr); 
+				 byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { this.Y = this.C; }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('C='+this.C, 50*k+50, 680);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"C", this.C);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.C=Number(localStorage.getItem("i"+this.i+"j"+this.j+"C" ));}
+  break;
+  
+  case 91:
+	blok.A = 1;
+	blok.vvod = function(){ vozvr = prompt('A=', this.A); this.A = vozvr==null ? this.A : isNaN(Number(vozvr))?1:Number(vozvr);
+				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
+	blok.run = function() { this.Y = Math.sin(this.A*t*dt); }
+	blok.draw_parameters = function(k){ 
+	  ctx.font = '15px serif';ctx.fillStyle = "black";
+	  ctx.fillText('№'+k, 50*k+50, 665);
+	  ctx.fillText('A='+this.A, 50*k+50, 680);
+	}
+	blok.save_parameters_in_localStorage = function(){ 
+		localStorage.setItem("i"+this.i+"j"+this.j+"A", this.A);}
+	blok.read_parameters_from_localStorage = function(){ 
+		this.A=Number(localStorage.getItem("i"+this.i+"j"+this.j+"A" ));}
+  break;
+  
+    case 92:
+	blok.run = function() { if(t==0) this.Y = 1; else this.Y = 0; }
+  break;
+  }
+  kolvo_blokov++;
+  bloki[kolvo_blokov]=blok;
+}
+ var BlocksEnum = {"pusto":0, "lp":1, "vn":2, "lv":3, "ln":4, "pv":5, "pn":6, "krest":7, 
+			"krest_s_tochkoi":8, "otvetvl_vniz":9, "otvetvl_vverh":10, "otvetvl_vpravo":11, "otvetvl_vlevo":12,
+			"strelka_vniz":13, "strelka_vverh":14, "strelka_vpravo":15, "strelka_vlevo":16, 
+			"summator":30,"summator_s_minusom_snizu":31,"summator_s_minusom_sverhu":32,"summator_s_minusom_snizu_i_sverhu":33,
+			"K":40,"differentsiator":41,"K_s_ogranicheniem":42,"ogranichenie":43,
+			"Xott":67, "fazovaya_ploskosti":68,
+			"inertsionnoe_zveno":70,"integrator":71,"kolebatelnoe_zveno":72,"zveno_3go_poriadka":73,			
+			"Const":90,"sinAt":91,"delta":92};
+	Object.freeze(BlocksEnum);
+	//let block = BlocksEnum.lp;
+var ilev1,jverh1;
+function naiti_ilev1_jverh1(i8,j8){
+     ilev1=i8;jverh1=j8;
+     mij=matrix[i8][j8];
+     if(mij>=40){
+       if(mij==matrix[i8-1][j8])ilev1=i8-1;
+       if(mij==matrix[i8-1][j8] && mij==matrix[i8-2][j8])ilev1=i8-2;
+       if(mij==matrix[i8][j8-1])jverh1=j8-1;
+       if(mij==matrix[i8][j8-1] && mij==matrix[i8][j8-2])jverh1=j8-2;
+     } 	
+}
+function idti_po_linii(i8,j8,ipr,jpr){
+     if(jpr==j8+1 && i8==ipr){//идём вверх
+       switch(matrix[i8][j8]){
+	case 2: idti_po_linii(i8,j8-1,i8,j8);break;
+	case 4: idti_po_linii(i8-1,j8,i8,j8);break;
+	case 6: idti_po_linii(i8+1,j8,i8,j8);break;
+	case 7: idti_po_linii(i8,j8-1,i8,j8);break;
+	case 8:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 9:{ idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 11:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 12:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8-1,j8,i8,j8); break;}
+	case 14:{ naiti_ilev1_jverh1(i8,j8-1);for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev1][jverh1] && bloki[k].i==ilev1 && bloki[k].j==jverh1)
+		{matr_sviazei[k2][k]=1; if(bloki[k].blocktype>=40)bloki[k].vhod=k2; if(bloki[k].blocktype>=30 && bloki[k].blocktype<=33)bloki[k].vhodniz=k2;} break;}
+	default: if(matrix[ipr][jpr]<30){naidena_oshibka=true;ioshibki=i8;joshibki=j8;}
+      }}
+    if(jpr==j8-1 && i8==ipr)//идём вниз
+       switch(matrix[i8][j8]){
+	case 2: idti_po_linii(i8,j8+1,i8,j8);break;
+	case 3: idti_po_linii(i8-1,j8,i8,j8);break;
+	case 5: idti_po_linii(i8+1,j8,i8,j8);break;
+	case 7: idti_po_linii(i8,j8+1,i8,j8);break;
+	case 8:{ idti_po_linii(i8,j8+1,i8,j8);idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 10:{ idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 11:{ idti_po_linii(i8,j8+1,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 12:{ idti_po_linii(i8,j8+1,i8,j8);idti_po_linii(i8-1,j8,i8,j8); break;}
+	case 13:{ naiti_ilev1_jverh1(i8,j8+1);for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev1][jverh1] && bloki[k].i==ilev1 && bloki[k].j==jverh1)
+		{matr_sviazei[k2][k]=1; if(bloki[k].blocktype>=40)bloki[k].vhod=k2; if(bloki[k].blocktype>=30 && bloki[k].blocktype<=33)bloki[k].vhodverh=k2;} break;}
+	default: if(matrix[ipr][jpr]<30){naidena_oshibka=true;ioshibki=i8;joshibki=j8;}
+      }
+     if(jpr==j8 && i8==ipr-1)//идём влево
+       switch(matrix[i8][j8]){
+	case 1: idti_po_linii(i8-1,j8,i8,j8);break;
+	case 5: idti_po_linii(i8,j8-1,i8,j8);break;
+	case 6: idti_po_linii(i8,j8+1,i8,j8);break;
+	case 7: idti_po_linii(i8-1,j8,i8,j8);break;
+	case 8:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8,j8+1,i8,j8); break;}
+	case 9:{ idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8,j8+1,i8,j8); break;}
+	case 10:{ idti_po_linii(i8-1,j8,i8,j8);idti_po_linii(i8,j8-1,i8,j8); break;}
+	case 11:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8,j8+1,i8,j8); break;}
+	case 16:{ naiti_ilev1_jverh1(i8-1,j8);for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev1][jverh1] && bloki[k].i==ilev1 && bloki[k].j==jverh1)
+		{matr_sviazei[k2][k]=1; if(bloki[k].blocktype>=40)bloki[k].vhod=k2; } break;}
+	default: if(matrix[ipr][jpr]<30){naidena_oshibka=true;ioshibki=i8;joshibki=j8;}
+      }
+    if(jpr==j8 && i8==ipr+1){//идём вправо
+       switch(matrix[i8][j8]){
+	case 1: idti_po_linii(i8+1,j8,i8,j8);break;
+	case 3: idti_po_linii(i8,j8-1,i8,j8);break;
+	case 4: idti_po_linii(i8,j8+1,i8,j8);break;
+	case 7: idti_po_linii(i8+1,j8,i8,j8);break;
+	case 8:{ idti_po_linii(i8,j8+1,i8,j8);idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 9:{ idti_po_linii(i8+1,j8,i8,j8);idti_po_linii(i8,j8+1,i8,j8); break;}
+	case 10:{ idti_po_linii(i8,j8-1,i8,j8);idti_po_linii(i8+1,j8,i8,j8); break;}
+	case 12:{ idti_po_linii(i8,j8+1,i8,j8);idti_po_linii(i8,j8-1,i8,j8); break;}
+	case 15:{ naiti_ilev1_jverh1(i8+1,j8);for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev1][jverh1] && bloki[k].i==ilev1 && bloki[k].j==jverh1)
+		{matr_sviazei[k2][k]=1; bloki[k].vhod=k2; } break;}
+	default: if(matrix[ipr][jpr]<30){naidena_oshibka=true;ioshibki=i8;joshibki=j8;}
+      }}
+}
+function naiti_matr_sviazei(){
+	for(k2=1;k2<=kolvo_blokov;k2++){
+	   if(bloki[k2].blocktype>=30 && bloki[k2].blocktype<=33){bloki[k2].vhodniz=0;bloki[k2].vhodverh=0;}//обнуляем входы
+	   bloki[k2].vhod=0;//обнуляем входы
+	}
+	for(k2=1;k2<=kolvo_blokov;k2++){
+	   matr_sviazei[k2]=[];
+	   for(k1=1;k1<=kolvo_blokov;k1++)
+	      matr_sviazei[k2][k1]=0;
+	   if(bloki[k2].blocktype>=40){
+		for(i7=bloki[k2].i; i7<=bloki[k2].i+2; i7++){ idti_po_linii(i7,bloki[k2].j-1,i7,bloki[k2].j); idti_po_linii(i7,bloki[k2].j+3,i7,bloki[k2].j+2);}
+		for(j7=bloki[k2].j; j7<=bloki[k2].j+2; j7++){ idti_po_linii(bloki[k2].i-1,j7,bloki[k2].i,j7); idti_po_linii(bloki[k2].i+3,j7,bloki[k2].i+2,j7);}
+	   }
+	   if(bloki[k2].blocktype>=30 && bloki[k2].blocktype<=33)
+		 idti_po_linii(bloki[k2].i+1,bloki[k2].j,bloki[k2].i,bloki[k2].j); 
+	}
+}
+function raschiot(){
+  for(k=1;k<=kolvo_blokov;k++)
+      bloki[k].init();
+  
+  if(dt==0){alert('Δt can not be 0');return;}
+  Tdelnadt=T/dt;
+  for(t=0;t<Tdelnadt;t++)
+    for(k=1;k<=kolvo_blokov;k++)
+      bloki[k].run();
+      
+  byl_raschiot=true;
+  draw();
+}
+function save_scheme_in_localStorage(){
+	localStorage.setItem("T", T);
+	localStorage.setItem("Δt", dt);
+	for(i=0;i<50;i++)//50
+	    for(j=0;j<50;j++){//50
+	      mij=matrix[i][j];
+	      //if(mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
+	      // && mij==matrix[i][j+2] && mij==matrix[i+1][j+2] && mij==matrix[i+2][j+2]){
+		localStorage.setItem("i"+i+"j"+j, mij);
+	      //}
+	      //if(mij<=33)
+	      //  localStorage.setItem("i"+i+"j"+j, mij);
+	   }
+	for(k=1;k<=kolvo_blokov;k++)
+	   bloki[k].save_parameters_in_localStorage();
+}
+function read_scheme_from_localStorage(){
+	T=localStorage.getItem("T");//T=null;
+	if(T==null){ T=10; create_block(1,2,90);create_block(5,3,31);create_block(7,2,70);create_block(11,2,71);create_block(16,2,67);create_block(9,6,40);
+		create_block(1,12,90);create_block(5,12,70);create_block(9,12,67);return;}
+	dt=localStorage.getItem("Δt");
+	for(i=0;i<50;i++)//50
+	    for(j=0;j<50;j++)//50
+	      matrix[i][j]=Number(localStorage.getItem("i"+i+"j"+j));
+	      
+	for(i=0;i<50;i++)//50
+	    for(j=0;j<50;j++){//50
+	      mij=matrix[i][j];
+	      if(j<=29 && mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
+	       && mij==matrix[i][j+2] && mij==matrix[i+1][j+2] && mij==matrix[i+2][j+2]
+	       || j<=31 && mij<=33 && mij>=30 )
+	       create_block(i,j,mij);
+	    }
+	       
+	for(k=1;k<=kolvo_blokov;k++)
+	   bloki[k].read_parameters_from_localStorage();
+}
+
+function show_run(){
+  document.getElementById('run').innerHTML=' T:<input onchange="if(isNaN(this.value)){T=10;this.value=10;}else T=this.value;" type="text" size="5" maxlength="10" value="'+T+
+  '"> Δt:<input onchange="if(isNaN(this.value)){dt=0.01;this.value=0.01;}else dt=this.value;" type="text" size="6" maxlength="10" value="'+dt+'"><a href="javascript:void(0);" onclick="raschiot();"> run</a>';
+}
+function hide_run(){
+  document.getElementById('run').innerHTML='';
+}
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="read_scheme_from_localStorage();draw();"><!--http://w3.org.ua/js/pishem-menyu-na-java-script/-->
+  
+
+  
+
+    
+    
+    
+  <!--a href="" onclick="">file</a--> <a href="javascript:void(0);" onclick="mode='edit';hide_run();byl_raschiot=false;draw();">edit</a> 
+  <a href="javascript:void(0);" onclick="naidena_oshibka=false; naiti_matr_sviazei(); 
+  if(!naidena_oshibka){mode='solve';show_run();save_scheme_in_localStorage();} draw(); teku_block=0;">solve</a> <b id="run"></b><br>
+    <canvas id="tutorial" width="1500" height="1000" 
+    onmousedown="mymousedown=true;ipredpred=iteku;jpredpred=jteku;clicknuli(iteku,jteku);" 
+    onmouseup="mymousedown=false;"
+    onmousemove="draw3x3();ipred=iteku;jpred=jteku;iteku=Math.floor(event.pageX/30)>=0?Math.floor(event.pageX/30):0;jteku=Math.floor(event.pageY/20)-1;
+		draw_block(iteku,jteku,teku_block,'lightblue');if(mymousedown && (iteku!=ipred || jteku!=jpred)){if(mode=='edit')draw_link();ipredpred=ipred;jpredpred=jpred;}"></canvas>
+    <script>
+    var canvas = document.getElementById('tutorial'); if (canvas.getContext) {var ctx = canvas.getContext('2d');}
+    var teku_block=0;var iteku,jteku,ipred,jpred,ipredpred,jpredpred; var mymousedown; var mode='edit'; var kolvo_blokov=-1; var bloki=[]; var matr_sviazei = []; var k2, naidena_oshibka=false, ioshibki, joshibki;
+    var T=10,dt=0.01,t; var byl_raschiot=false;
+    create_block(-3,-3,90);bloki[0].C=0;
+    </script> 
+    <br>В режиме редактора(edit) экран - розового цвета, в режиме расчёта и ввода параметров(solve) - экран белого цвета.
+    <br>Линия связи должна заканчиваться стрелкой.
+    <br>Чтобы протянуть линию связи в режиме edit, нажмите мышкой рядом с блоком и тяните в нужную сторону. Отпустите мышку. Только не нажимайте на блок, вы его сотрёте.
+    <br>У сумматора выход только справа.
+    <br>Наберите схему в редакторе, нажмите solve, задайте время T, шаг расчёта Δt и нажмите run.
+    <br>Чтобы ввести параметры, в режиме solve наведите курсор на блок и кликните мышкой.
+    <br>Чтобы увеличить график, в режиме solve после расчёта наведите курсор на него и кликните мышкой.
+    <br>
+    <br>In the editor (edit) mode, the screen is pink, in the calculation and input mode (solve) - the screen is white.
+    <br>The link line must end with an arrow.
+    <br>To extend the link in edit mode, click the mouse near of the block and drag it to the desired direction. Release the mouse. Just do not click on the block, you will erase it.
+    <br>At the adder, the output is only on the right.
+    <br>Type the scheme in the editor, press solve, set the time T, the calculation step Δt and press "run".
+    <br>To enter parameters, in solve mode, move the cursor to the block and click.
+    <br>To increase the graph, in the solve mode, after the calculation, move the cursor over it and click with the mouse.
+    <br><br>Apache License v2.0
+  </body>
+</html>
