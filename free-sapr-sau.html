@@ -996,16 +996,7 @@ function create_block(i6,j6,block6){
   kolvo_blokov++;
   bloki[kolvo_blokov]=blok;
 }
- var BlocksEnum = {"pusto":0, "lp":1, "vn":2, "lv":3, "ln":4, "pv":5, "pn":6, "krest":7, 
-			"krest_s_tochkoi":8, "otvetvl_vniz":9, "otvetvl_vverh":10, "otvetvl_vpravo":11, "otvetvl_vlevo":12,
-			"strelka_vniz":13, "strelka_vverh":14, "strelka_vpravo":15, "strelka_vlevo":16, 
-			"summator":30,"summator_s_minusom_snizu":31,"summator_s_minusom_sverhu":32,"summator_s_minusom_snizu_i_sverhu":33,
-			"K":40,"differentsiator":41,"K_s_ogranicheniem":42,"ogranichenie":43,
-			"Xott":67, "fazovaya_ploskosti":68,
-			"inertsionnoe_zveno":70,"integrator":71,"kolebatelnoe_zveno":72,"zveno_3go_poriadka":73,			
-			"Const":90,"sinAt":91,"delta":92};
-	Object.freeze(BlocksEnum);
-	//let block = BlocksEnum.lp;
+
 var ilev1,jverh1;
 function naiti_ilev1_jverh1(i8,j8){
      ilev1=i8;jverh1=j8;
@@ -1091,6 +1082,7 @@ function naiti_matr_sviazei(){
 	   if(bloki[k2].blocktype>=30 && bloki[k2].blocktype<=33)
 		 idti_po_linii(bloki[k2].i+1,bloki[k2].j,bloki[k2].i,bloki[k2].j); 
 	}
+	gruf();
 }
 function raschiot(){
   for(k=1;k<=kolvo_blokov;k++)
@@ -1100,7 +1092,7 @@ function raschiot(){
   Tdelnadt=T/dt;
   for(t=0;t<Tdelnadt;t++)
     for(k=1;k<=kolvo_blokov;k++)
-      bloki[k].run();
+      bloki[por_raschota[k]].run();
       
   byl_raschiot=true;
   draw();
@@ -1143,6 +1135,220 @@ function read_scheme_from_localStorage(){
 	   bloki[k].read_parameters_from_localStorage();
 }
 
+
+
+
+
+
+var ddd, por_raschota=[];
+
+function petlia(numer)
+{
+	var i;
+	for( i = 1;  i <= kolvo_blokov; i++)
+	{
+		matr_sviazei[numer][i] = 0;
+		matr_sviazei[i][numer] = 0;
+	}
+	por_raschota[ddd] = numer;
+	ddd++;
+}
+
+var kol_vhodov, kol_vihodov, max_kol_dug;
+
+function opred_kol_dug( i )
+{
+	var j, kol_dug;
+	 kol_dug =0;
+	 for( j = 1; j <= kolvo_blokov; j++)
+		if( i != j )
+		{
+			if( matr_sviazei[i][j] != 0 ) kol_dug++;
+			if( matr_sviazei[j][i] != 0 ) kol_dug++;
+		}
+	if( kol_dug > max_kol_dug )
+		max_kol_dug = kol_dug;
+	return kol_dug;
+}
+
+function opred_kol_vhodov( i )
+{
+	var j, kol_dug;
+	kol_dug = 0;
+	for( j = 1; j <= kolvo_blokov; j++ )
+		 if (i!=j)
+			 if( matr_sviazei[j][i] != 0 ) kol_dug++;
+
+	return kol_dug;
+}
+
+
+function preobr( numer )
+{
+	var x,y,kkk, Vhody=[],Vihody=[];
+	
+
+	kol_vhodov = 0;
+	kol_vihodov = 0;
+
+	for( x = 1; x <= kolvo_blokov; x++)
+	{
+		if( matr_sviazei[x][numer] != 0 )
+		{
+			kol_vhodov++;
+			Vhody[ kol_vhodov ] = x;
+		}
+		if( matr_sviazei[numer][x] != 0 )
+		{
+			kol_vihodov++;
+			Vihody[ kol_vihodov ] = x;
+		}
+	}
+
+	for( x =1; x <= kol_vhodov; x++)
+		for( y = 1; y <= kol_vihodov; y++)
+		{
+			matr_sviazei[Vhody[x]][numer] =0;
+			matr_sviazei[numer][Vihody[y]] =0;
+			matr_sviazei[Vhody[x]][Vihody[y]] =1;
+			kkk = opred_kol_dug( y );
+		}
+
+	for( x = 1; x <= kolvo_blokov; x++)
+		if(matr_sviazei[x][x] != 0) petlia(x);
+}
+
+
+
+
+function Vhod_vozd()
+{
+	var j,i;
+	for( j = 1; j <= kolvo_blokov; j++ )
+	{
+		if( bloki[j].blocktype >= 40  )//[ inercionnoe .. optimization ]
+			if( opred_kol_vhodov(j) > 1 ) Osh( bloki[j].i, bloki[j].j );
+		if( bloki[j].blocktype >= 90  )//[ constanta.. at ]
+		{
+			if( opred_kol_vhodov(j) != 0 ) Osh( bloki[j].i, bloki[j].j );
+			por_raschota[ddd] = j;
+			ddd++;
+			for( i = 1; i <= kolvo_blokov; i++)
+				matr_sviazei[j][i] = 0;
+		}
+
+		if( bloki[j].blocktype == 67 || bloki[j].blocktype == 68 )//[ pereh_proces,fazovaia_ploskost ] 
+			if( ( opred_kol_vhodov(j) != 1 ) ||
+				( opred_kol_dug(j) > 1 ) )Osh( bloki[j].i, bloki[j].j );
+	}
+}
+
+
+
+
+function inset( el, set )
+{
+	var i;
+	for( i = 0; i < set.length; i++)
+		if( el == set[i] )return true;
+	return false;
+}
+
+function Osh( x, y )
+{
+	naidena_oshibka=true;
+	ioshibki=x;
+	joshibki=y;
+}
+
+function vershiny( Mn )
+{
+	var i,k,kol_dug;
+	max_kol_dug = 2;
+	k = 2;
+	while( k <= max_kol_dug )
+	{
+		for( i = 1; i <= kolvo_blokov; i++ )
+		{
+			kol_dug = opred_kol_dug( i );
+			if( ( kol_dug <= k ) && inset( bloki[i].blocktype, Mn ) )
+				preobr(i);
+		}
+		k++;
+	}
+}
+
+
+
+
+function Ostalnie()
+{
+	var k,m,n,l,j,i;
+	while( ddd <= kolvo_blokov )
+	{
+		for( j = 1; j <= kolvo_blokov; j++ )
+		{
+			k = 0;
+
+			for( i = 1; i <= ddd-1; i++ )
+				if( por_raschota[i] == j ) k = 1;
+			if( k == 0 )
+			{
+				m = 0;
+				n = 0;
+				for( i = 1; i <= kolvo_blokov; i++)
+				{
+					if( matr_sviazei_1[i][j] != 0 )
+					{
+						n++;
+						for( l = 1; l <= ddd-1; l++ )
+							if( por_raschota[l] == i ) m++;
+					}
+				}
+				if ( n == m ){
+					por_raschota[ ddd ] = j;
+					ddd++;
+				}
+			}
+		}
+	}
+}
+
+
+var matr_sviazei_1=[];
+function gruf()
+{	
+	ddd=1;
+	var Mnog=[];
+	for( i = 1; i <= kolvo_blokov; i++){
+		matr_sviazei_1[i] = [];
+		for( j = 1; j <= kolvo_blokov; j++)
+			matr_sviazei_1[i][j] = matr_sviazei[i][j];
+	}
+	Vhod_vozd();
+	if( naidena_oshibka ) return;
+	
+	Mnog = [30,31,32,33,40,42,43];//[ summator..umnogitel, koefficient, invertor, modul_..liuft,optimization];
+	vershiny( Mnog );
+	
+	Mnog = [41,70,71,72,73]//[ inercionnoe..differenciator,zapazdyvanie,correct_ ];
+	vershiny( Mnog );
+	
+	Ostalnie();//alert(por_raschota);
+}
+
+ var BlocksEnum = {"pusto":0, "lp":1, "vn":2, "lv":3, "ln":4, "pv":5, "pn":6, "krest":7, 
+			"krest_s_tochkoi":8, "otvetvl_vniz":9, "otvetvl_vverh":10, "otvetvl_vpravo":11, "otvetvl_vlevo":12,
+			"strelka_vniz":13, "strelka_vverh":14, "strelka_vpravo":15, "strelka_vlevo":16, 
+			"summator":30,"summator_s_minusom_snizu":31,"summator_s_minusom_sverhu":32,"summator_s_minusom_snizu_i_sverhu":33,
+			"K":40,"differentsiator":41,"K_s_ogranicheniem":42,"ogranichenie":43,
+			"Xott":67, "fazovaya_ploskosti":68,
+			"inertsionnoe_zveno":70,"integrator":71,"kolebatelnoe_zveno":72,"zveno_3go_poriadka":73,			
+			"Const":90,"sinAt":91,"delta":92};
+	Object.freeze(BlocksEnum);
+	//let block = BlocksEnum.lp;
+
+
 function show_run(){
   document.getElementById('run').innerHTML=' T:<input onchange="if(isNaN(this.value)){T=10;this.value=10;}else T=this.value;" type="text" size="5" maxlength="10" value="'+T+
   '"> Δt:<input onchange="if(isNaN(this.value)){dt=0.01;this.value=0.01;}else dt=this.value;" type="text" size="6" maxlength="10" value="'+dt+'"><a href="javascript:void(0);" onclick="raschiot();"> run</a>';
@@ -1184,6 +1390,7 @@ function hide_run(){
     <br>Наберите схему в редакторе, нажмите solve, задайте время T, шаг расчёта Δt и нажмите run.
     <br>Чтобы ввести параметры, в режиме solve наведите курсор на блок и кликните мышкой.
     <br>Чтобы увеличить график, в режиме solve после расчёта наведите курсор на него и кликните мышкой.
+    <br>Чтобы распечатать, кликните правой кнопкой мышки по картинке и нажмите "сохранить картинку как". Теперь в просмотрщике разверните на 90 градусов и распечатайте.
     <br>
     <br>In the editor (edit) mode, the screen is pink, in the calculation and input mode (solve) - the screen is white.
     <br>The link line must end with an arrow.
