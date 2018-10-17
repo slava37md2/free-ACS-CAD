@@ -720,7 +720,7 @@ function create_block(i6,j6,block6){
   
   case 41://differentsiator
 	blok.X = 0;
-	blok.run = function() { this.Y = bloki[this.vhod].Y - this.X; this.X = bloki[this.vhod].Y; }
+	blok.run = function() { this.Y = (bloki[this.vhod].Y - this.X)/dt; this.X = bloki[this.vhod].Y; }
 	blok.init = function() { this.X = 0; }
   break;
   
@@ -1177,7 +1177,7 @@ function opred_kol_vhodov( i )
 	kol_dug = 0;
 	for( j = 1; j <= kolvo_blokov; j++ )
 		 if (i!=j)
-			 if( matr_sviazei[j][i] != 0 ) kol_dug++;
+			 if( matr_sviazei_1[j][i] != 0 ) kol_dug++;
 
 	return kol_dug;
 }
