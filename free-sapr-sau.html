@@ -1316,7 +1316,7 @@ function Ostalnie()
 
 
 var matr_sviazei_1=[];
-function gruf()
+function gruf()//Порядок расчёта определяется по книжке Крутько Максимов Скворцов Алгоритмы и программы проектирования автоматических систем. стр.238-239
 {	
 	ddd=1;
 	var Mnog=[];
@@ -1328,10 +1328,10 @@ function gruf()
 	Vhod_vozd();
 	if( naidena_oshibka ) return;
 	
-	Mnog = [30,31,32,33,40,42,43];//[ summator..umnogitel, koefficient, invertor, modul_..liuft,optimization];
+	Mnog = [30,31,32,33,40,42,43];//чёрные вершины[ summator..umnogitel, koefficient, invertor, modul_..liuft,optimization];
 	vershiny( Mnog );
 	
-	Mnog = [41,70,71,72,73]//[ inercionnoe..differenciator,zapazdyvanie,correct_ ];
+	Mnog = [41,70,71,72,73]//белые вершины[ inercionnoe..differenciator,zapazdyvanie,correct_ ];
 	vershiny( Mnog );
 	
 	Ostalnie();//alert(por_raschota);
