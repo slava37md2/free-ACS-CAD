@@ -60,9 +60,10 @@
 
       function draw() {
           if(mode=='edit')jmax=50;else{ jmax=32; ctx.fillStyle = "white"; ctx.fillRect(0, 650, 1500, 1000);
-	     ctx.fillStyle = "black"; ctx.font = '15px serif';ctx.fillText('Δt='+dt, 10, 685);ctx.fillText('T='+T, 10, 665);
+	     ctx.fillStyle = "black"; ctx.font = '15px serif';ctx.fillText('Δt='+dt, 10, 685);ctx.fillText('T='+T, 10, 665);ctx.fillText('Order of', 10, 705);ctx.fillText('solving:', 10, 725);
 	     for(k=1;k<=kolvo_blokov;k++){
 		bloki[k].draw_parameters(k);
+		ctx.fillText(por_raschota[k], 10, 725+k*15);
 	     }
 	  }
 	  ctx.strokeStyle = "black";
