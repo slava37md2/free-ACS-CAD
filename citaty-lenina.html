@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML  4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Продолжи фразу Ленина</title>
+  <style>
+   body {
+    background-color: #DEDECA;
+    color: #555555; /* Цвет текста */
+   }
+  </style>
+
+
+
+ </head>
+ <body>
+<script>
+function proverka(id){
+ let konets_frazy = ["путём", "управлять государством", "является кино", "учиться", "партия", "лучше", "не ест", "коммунизма"];
+
+ if(konets_frazy[id]==document.getElementById(id).value)
+   alert("Молодец!!!");
+}
+</script>
+
+<h1>Продолжи фразу Ленина</h1>
+
+Мы пойдём другим <input type="text" id="0" onkeyup="proverka('0')" size="40"><br>
+Каждая кухарка должна научиться <input type="text" id="1" onkeyup="proverka('1')" size="40"><br>
+Из всех искусств для нас важнейшим <input type="text" id="2" onkeyup="proverka('2')" size="40"><br>
+Учиться, учиться и <input type="text" id="3" onkeyup="proverka('3')" size="40"><br>
+Есть такая <input type="text" id="4" onkeyup="proverka('4')" size="40"><br>
+Лучше меньше, да <input type="text" id="5" onkeyup="proverka('5')" size="40"><br>
+Кто не работает, тот <input type="text" id="6" onkeyup="proverka('6')" size="40"><br>
+Профсоюзы — школа <input type="text" id="7" onkeyup="proverka('7')" size="40"><br>
+
+
+
+
+ </body>
+</html>
