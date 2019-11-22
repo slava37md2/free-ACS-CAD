@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML  4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Продолжи фразу Ленина</title>
+  <style>
+   body {
+    background-color: #DEDECA;
+    color: #555555; /* Цвет текста */
+   }
+  </style>
+
+
+
+ </head>
+ <body>
+<script>
+function proverka(id){
+ let konets_frazy = ["путём", "управлять государством", "является кино", "учиться", "партия", "лучше", "не ест", "коммунизма"];
+
+ if(konets_frazy[id.split('.')[0]]==document.getElementById(id).value)
+   alert("Молодец!!!");
+ else alert("Не угадал!!!");
+}
+</script>
+
+<h1>Продолжи фразу Ленина</h1>
+
+Мы пойдём другим <input type="button" id="0" onclick="proverka('0')" value="конём"> <input type="button" id="0.1" onclick="proverka('0.1')" value="путём"> 
+<input type="button" id="0.2" onclick="proverka('0.2')" value="образом"> <input type="button" id="0.3" onclick="proverka('0.3')" value="государством управлять"><br>
+
+Каждая кухарка должна научиться <input type="button" id="1" onclick="proverka('1')" value="варить борщ"> <input type="button" id="1.1" onclick="proverka('1.1')" value="отшивать ухажёров"> 
+<input type="button" id="1.2" onclick="proverka('1.2')" value="носить шляпку"> <input type="button" id="1.3" onclick="proverka('1.3')" value="управлять государством"><br>
+
+Из всех искусств для нас важнейшим <input type="button" id="2" onclick="proverka('2')" value="являются понты"> <input type="button" id="2.1" onclick="proverka('2.1')" value="является кино"> 
+<input type="button" id="2.2" onclick="proverka('2.2')" value="будет интернет"> <input type="button" id="2.3" onclick="proverka('2.3')" value="управлять государством"><br>
+
+Учиться, учиться и <input type="button" id="3" onclick="proverka('3')" value="чаще бриться"> <input type="button" id="3.1" onclick="proverka('3.1')" value="ходить в кино"> 
+<input type="button" id="3.2" onclick="proverka('3.2')" value="учиться"> <input type="button" id="3.3" onclick="proverka('3.3')" value="управлять государством"><br>
+
+Есть такая <input type="button" id="4" onclick="proverka('4')" value="мафия"> <input type="button" id="4.1" onclick="proverka('4.1')" value="партия"> 
+<input type="button" id="4.2" onclick="proverka('4.2')" value="девушка"> <input type="button" id="4.3" onclick="proverka('4.3')" value="профессия, родину защищать"><br>
+
+Лучше меньше, да <input type="button" id="5" onclick="proverka('5')" value="слаще"> <input type="button" id="5.1" onclick="proverka('5.1')" value="дороже"> 
+<input type="button" id="5.2" onclick="proverka('5.2')" value="вкуснее"> <input type="button" id="5.3" onclick="proverka('5.3')" value="лучше"><br>
+
+Кто не работает, тот <input type="button" id="6" onclick="proverka('6')" value="не пьёт шампанского"> <input type="button" id="6.1" onclick="proverka('6.1')" value="не катается на коньках"> 
+<input type="button" id="6.2" onclick="proverka('6.2')" value="не ест"> <input type="button" id="6.3" onclick="proverka('6.3')" value="не ездит в отпуск"><br>
+
+Профсоюзы — школа <input type="button" id="7" onclick="proverka('7')" value="жизни"> <input type="button" id="7.1" onclick="proverka('7.1')" value="акробатики"> 
+<input type="button" id="7.2" onclick="proverka('7.2')" value="школ"> <input type="button" id="7.3" onclick="proverka('7.3')" value="коммунизма"><br>
+
+
+
+
+ </body>
+</html>
