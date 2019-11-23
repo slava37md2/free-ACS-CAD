@@ -15,10 +15,12 @@
  </head>
  <body>
 <script>
-function proverka(id){
- let konets_frazy = ["путём", "управлять государством", "является кино", "учиться", "партия", "лучше", "не ест", "коммунизма"];
+function proverka(ed){
+// let konets_frazy = ["путём", "управлять государством", "является кино", "учиться", "партия", "лучше", "не ест", "коммунизма", "не допустимы", "писать", "экономики", "государства", "революции", "ошибся",
+//                     "поражение", "трудящимися массами", "господствует", "смотреть прямо в лицо", "на самой вершине"];
 
- if(konets_frazy[id.split('.')[0]]==document.getElementById(id).value)
+// if(konets_frazy[id.split('.')[0]]==document.getElementById(id).value)
+ if(ed==1)
    alert("Молодец!!!");
  else alert("Не угадал!!!");
 }
@@ -26,29 +28,99 @@ function proverka(id){
 
 <h1>Продолжи фразу Ленина</h1>
 
-Мы пойдём другим <input type="button" id="0" onclick="proverka('0')" value="конём"> <input type="button" id="0.1" onclick="proverka('0.1')" value="путём"> 
-<input type="button" id="0.2" onclick="proverka('0.2')" value="образом"> <input type="button" id="0.3" onclick="proverka('0.3')" value="государством управлять"><br>
+Мы пойдём другим <input type="button" onclick="proverka(0)" value="конём"> <input type="button" onclick="proverka(1)" value="путём"> 
+<input type="button" onclick="proverka(0)" value="образом"> <input type="button" onclick="proverka(0)" value="государством управлять"><br><br>
 
-Каждая кухарка должна научиться <input type="button" id="1" onclick="proverka('1')" value="варить борщ"> <input type="button" id="1.1" onclick="proverka('1.1')" value="отшивать ухажёров"> 
-<input type="button" id="1.2" onclick="proverka('1.2')" value="носить шляпку"> <input type="button" id="1.3" onclick="proverka('1.3')" value="управлять государством"><br>
+Каждая кухарка должна научиться <input type="button" onclick="proverka(0)" value="варить борщ"> <input type="button" onclick="proverka(0)" value="отшивать ухажёров"> 
+<input type="button" onclick="proverka(0)" value="носить шляпку"> <input type="button" onclick="proverka(1)" value="управлять государством"><br><br>
 
-Из всех искусств для нас важнейшим <input type="button" id="2" onclick="proverka('2')" value="являются понты"> <input type="button" id="2.1" onclick="proverka('2.1')" value="является кино"> 
-<input type="button" id="2.2" onclick="proverka('2.2')" value="будет интернет"> <input type="button" id="2.3" onclick="proverka('2.3')" value="управлять государством"><br>
+Из всех искусств для нас важнейшим <input type="button" onclick="proverka(0)" value="являются понты"> <input type="button" onclick="proverka(1)" value="является кино"> 
+<input type="button" onclick="proverka(0)" value="будет интернет"> <input type="button" onclick="proverka(0)" value="управлять государством"><br><br>
 
-Учиться, учиться и <input type="button" id="3" onclick="proverka('3')" value="чаще бриться"> <input type="button" id="3.1" onclick="proverka('3.1')" value="ходить в кино"> 
-<input type="button" id="3.2" onclick="proverka('3.2')" value="учиться"> <input type="button" id="3.3" onclick="proverka('3.3')" value="управлять государством"><br>
+Учиться, учиться и <input type="button" onclick="proverka(0)" value="чаще бриться"> <input type="button" onclick="proverka(0)" value="ходить в кино"> 
+<input type="button" onclick="proverka(1)" value="учиться"> <input type="button" onclick="proverka(0)" value="умыться"><br><br>
 
-Есть такая <input type="button" id="4" onclick="proverka('4')" value="мафия"> <input type="button" id="4.1" onclick="proverka('4.1')" value="партия"> 
-<input type="button" id="4.2" onclick="proverka('4.2')" value="девушка"> <input type="button" id="4.3" onclick="proverka('4.3')" value="профессия, родину защищать"><br>
+Есть такая <input type="button" onclick="proverka(0)" value="мафия"> <input type="button" onclick="proverka(1)" value="партия"> 
+<input type="button" onclick="proverka(0)" value="девушка"> <input type="button" onclick="proverka(0)" value="профессия, родину защищать"><br><br>
 
-Лучше меньше, да <input type="button" id="5" onclick="proverka('5')" value="слаще"> <input type="button" id="5.1" onclick="proverka('5.1')" value="дороже"> 
-<input type="button" id="5.2" onclick="proverka('5.2')" value="вкуснее"> <input type="button" id="5.3" onclick="proverka('5.3')" value="лучше"><br>
+Лучше меньше, да <input type="button" onclick="proverka(0)" value="слаще"> <input type="button" onclick="proverka(0)" value="дороже"> 
+<input type="button" onclick="proverka(0)" value="вкуснее"> <input type="button" onclick="proverka(1)" value="лучше"><br><br>
 
-Кто не работает, тот <input type="button" id="6" onclick="proverka('6')" value="не пьёт шампанского"> <input type="button" id="6.1" onclick="proverka('6.1')" value="не катается на коньках"> 
-<input type="button" id="6.2" onclick="proverka('6.2')" value="не ест"> <input type="button" id="6.3" onclick="proverka('6.3')" value="не ездит в отпуск"><br>
+Кто не работает, тот <input type="button" onclick="proverka(0)" value="не пьёт шампанского"> <input type="button" onclick="proverka(0)" value="не катается на коньках"> 
+<input type="button" onclick="proverka(1)" value="не ест"> <input type="button" onclick="proverka(0)" value="не ездит в отпуск"><br><br>
 
-Профсоюзы — школа <input type="button" id="7" onclick="proverka('7')" value="жизни"> <input type="button" id="7.1" onclick="proverka('7.1')" value="акробатики"> 
-<input type="button" id="7.2" onclick="proverka('7.2')" value="школ"> <input type="button" id="7.3" onclick="proverka('7.3')" value="коммунизма"><br>
+Профсоюзы — школа <input type="button" onclick="proverka(0)" value="жизни"> <input type="button" onclick="proverka(0)" value="акробатики"> 
+<input type="button" onclick="proverka(0)" value="школ"> <input type="button" onclick="proverka(1)" value="коммунизма"><br><br>
+
+Всякий должен быть совершенно свободен исповедовать какую угодно религию или не признавать никакой религии, т. е. быть атеистом, каковым и бывает обыкновенно всякий социалист. 
+Никакие различия между гражданами в их правах в зависимости от религиозных верований совершенно 
+<input type="button" onclick="proverka(0)" value="необходимы"> <input type="button" onclick="proverka(0)" value="неприемлемы"> 
+<input type="button" onclick="proverka(1)" value="не допустимы"> <input type="button" onclick="proverka(0)" value="невероятны"><br><br>
+
+Приятнее и полезнее «опыт революции» проделывать, чем о нём 
+<input type="button" onclick="proverka(0)" value="думать"> <input type="button" onclick="proverka(1)" value="писать"> 
+<input type="button" onclick="proverka(0)" value="мечтать"> <input type="button" onclick="proverka(0)" value="фантазировать"><br><br>
+
+Политика есть концентрированное выражение 
+<input type="button" onclick="proverka(0)" value="географии"> <input type="button" onclick="proverka(0)" value="обществоведения"> 
+<input type="button" onclick="proverka(0)" value="колбасы"> <input type="button" onclick="proverka(1)" value="экономики"><br><br>
+
+Пока есть государство, нет свободы. Когда будет свобода, не будет 
+<input type="button" onclick="proverka(1)" value="государства"> <input type="button" onclick="proverka(0)" value="ничего, кроме свободы"> 
+<input type="button" onclick="proverka(0)" value="колбасы"> <input type="button" onclick="proverka(0)" value="экономики"><br><br>
+
+Всеобщая вера в революцию есть уже начало 
+<input type="button" onclick="proverka(0)" value="начал"> <input type="button" onclick="proverka(0)" value="конца"> 
+<input type="button" onclick="proverka(1)" value="революции"> <input type="button" onclick="proverka(0)" value="коммунизма"><br><br>
+
+Скажи мне, кто тебя хвалит, и я тебе скажу, в чем ты 
+<input type="button" onclick="proverka(0)" value="измазался"> <input type="button" onclick="proverka(1)" value="ошибся"> 
+<input type="button" onclick="proverka(0)" value="валялся"> <input type="button" onclick="proverka(0)" value="одет"><br><br>
+
+Не так опасно поражение, как опасна боязнь признать своё 
+<input type="button" onclick="proverka(1)" value="поражение"> <input type="button" onclick="proverka(0)" value="положение"> 
+<input type="button" onclick="proverka(0)" value="заблуждение"> <input type="button" onclick="proverka(0)" value="заболевание"><br><br>
+
+Буржуазия вынуждена лицемерить и называть «общенародной властью» или демократией вообще, или чистой демократией демократическую республику, на деле представляющую из себя диктатуру буржуазии, 
+диктатуру эксплуататоров над 
+<input type="button" onclick="proverka(0)" value="бездельниками и лоботрясами"> <input type="button" onclick="proverka(0)" value="солдатами и матросами"> 
+<input type="button" onclick="proverka(0)" value="рабочими и крестьянами"> <input type="button" onclick="proverka(1)" value="трудящимися массами"><br><br>
+
+Равнодушие есть молчаливая поддержка того, кто силён, того, кто 
+<input type="button" onclick="proverka(0)" value="жирует"> <input type="button" onclick="proverka(1)" value="господствует"> 
+<input type="button" onclick="proverka(0)" value="ворует"> <input type="button" onclick="proverka(0)" value="наглеет"><br><br>
+
+Только тогда мы научимся побеждать, когда мы не будем бояться признавать свои поражения и недостатки, когда мы будем истине, хотя бы и самой печальной, 
+<input type="button" onclick="proverka(0)" value="не плевать в душу"> <input type="button" onclick="proverka(0)" value="не злословить вслед"> 
+<input type="button" onclick="proverka(1)" value="смотреть прямо в лицо"> <input type="button" onclick="proverka(0)" value="читать стихи"><br><br>
+
+Не бояться признавать своих ошибок, не бояться многократного, повторного труда исправления их — и мы будем 
+<input type="button" onclick="proverka(0)" value="на вершине Олимпа"> <input type="button" onclick="proverka(0)" value="молодцами"> 
+<input type="button" onclick="proverka(0)" value="победителями"> <input type="button" onclick="proverka(1)" value="на самой вершине"><br><br>
+
+Мы должны бороться с религией. Это — азбука всего материализма и, следовательно, марксизма. Но марксизм не есть материализм, остановившийся на азбуке. Марксизм идет дальше. 
+Он говорит: надо уметь бороться с религией, а для этого надо материалистически объяснить источник веры и религии у 
+<input type="button" onclick="proverka(0)" value="муравьёв"> <input type="button" onclick="proverka(1)" value="масс"> 
+<input type="button" onclick="proverka(0)" value="рабочих и крестьян"> <input type="button" onclick="proverka(0)" value="солдат и матросов"><br><br>
+
+Никто не повинен в том, если родился рабом, но раб, который не только чуждается стремления к своей свободе, но приукрашивает и оправдывает своё рабство, 
+есть внушающий законное чувство негодования, презрения и омерзения 
+<input type="button" onclick="proverka(0)" value="подлец"> <input type="button" onclick="proverka(0)" value="негодяй"> 
+<input type="button" onclick="proverka(1)" value="холуй и хам"> <input type="button" onclick="proverka(0)" value="хулиган"><br><br>
+
+Один приём буржуазной печати всегда и во всех странах оказывается наиболее ходким и «безошибочно» действительным. Лги, шуми, кричи, повторяй ложь — 
+<input type="button" onclick="proverka(1)" value="«что-нибудь останется»"> <input type="button" onclick="proverka(0)" value="«всё материализуется»"> 
+<input type="button" onclick="proverka(0)" value="«что-нибудь изменится»"> <input type="button" onclick="proverka(0)" value="«ничего не изменится»"><br><br>
+
+Интеллигенция — не мозг нации, а 
+<input type="button" onclick="proverka(0)" value="сердце"> <input type="button" onclick="proverka(0)" value="глаза"> 
+<input type="button" onclick="proverka(0)" value="уши"> <input type="button" onclick="proverka(1)" value="говно"><br><br>
+
+Богатые и жулики, это — две стороны одной медали, это — два главные разряда паразитов, вскормленных капитализмом, это — главные враги социализма, 
+этих врагов надо взять под особый надзор всего населения, с ними надо расправляться, при малейшем нарушении ими правил и законов социалистического общества, 
+<input type="button" onclick="proverka(0)" value="весело"> <input type="button" onclick="proverka(0)" value="без мук совести"> 
+<input type="button" onclick="proverka(1)" value="беспощадно"> <input type="button" onclick="proverka(0)" value="без промедления"><br><br>
+
 
 
 
