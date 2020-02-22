@@ -1,0 +1,171 @@
+<div id="TutContainer"></div>
+<script src="three.min.js"></script>
+<!--script src="OrbitControls.js"></script-->
+<script type="text/javascript">
+/*global THREE*/
+
+var sceneWidth;
+var sceneHeight;
+var camera;
+var scene;
+var moving_scene;
+var velocity=0;
+var renderer;
+var dom;
+var hero;
+var sun;
+var ground;
+var orbitControl;
+
+init();
+function init() {
+	// set up the scene
+	createScene();
+
+	//call game loop
+	update();
+}
+
+function createScene(){
+    document.onkeydown = handleKeyDown;
+
+    sceneWidth=window.innerWidth;
+    sceneHeight=window.innerHeight;
+    scene = new THREE.Scene();//the 3d scene
+    //scene.fog = new THREE.Fog(0x00ff00, 50, 800);//enable fog
+    camera = new THREE.PerspectiveCamera( 60, sceneWidth / sceneHeight, 0.1, 100 );//perspective camera
+    renderer = new THREE.WebGLRenderer({alpha:true});//renderer with transparent backdrop
+    renderer.shadowMap.enabled = true;//enable shadow
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setSize( sceneWidth, sceneHeight );
+    dom = document.getElementById('TutContainer');
+	dom.appendChild(renderer.domElement);
+	
+    moving_scene =new THREE.Object3D();
+    house1=createhouse(10);house2=createhouse(20);house3=createhouse(30);house4=createhouse(40);
+    moving_scene.add(house1);     moving_scene.add(house2); moving_scene.add(house3);   moving_scene.add(house4);
+    scene.add( moving_scene );
+
+	//add items to scene
+	var heroGeometry = new THREE.BoxGeometry( 1, 1, 1 );//Машина
+	var heroMaterial = new THREE.MeshStandardMaterial( { color: 0xaaaaaa } );
+	hero = new THREE.Mesh( heroGeometry, heroMaterial );
+    hero.castShadow=true;
+	hero.receiveShadow=false;
+    avtivka=createavto(heroGeometry.vertices);
+    avtivka.position.x=-3;
+    avtivka.position.y=0.6;
+    avtivka.position.z=-3;
+    avtivka.rotation.x=-Math.PI/2;
+    scene.add( avtivka );
+	//hero.position.y=2;
+	//scene.add( hero );
+
+	var planeGeometry = new THREE.PlaneGeometry( 200, 5 );//Дорога
+	var planeMaterial = new THREE.MeshStandardMaterial( { color: 0xbbbbbb } )
+	ground = new THREE.Mesh( planeGeometry, planeMaterial );
+	ground.receiveShadow = true;
+	ground.castShadow=false;
+    ground.position.z=-3.25;
+	ground.rotation.x=-Math.PI/2;
+	scene.add( ground );
+
+    var planeGeometry2 = new THREE.PlaneGeometry( 200, 1.5 );//Земля под рельсами
+	var planeMaterial2 = new THREE.MeshStandardMaterial( { color: 0x884400 } )
+	ground2 = new THREE.Mesh( planeGeometry2, planeMaterial2 );
+	//ground2.receiveShadow = true;
+	ground2.castShadow=false;
+	ground2.rotation.x=-Math.PI/2;
+	scene.add( ground2 );
+
+	camera.position.z = 0;
+	camera.position.x = 2;//-5
+    camera.position.y = 2;//2
+    camera.rotation.y=-Math.PI/2;
+	
+    var light = new THREE.AmbientLight( 0x404040 ); // soft white light (мягкий белый свет)
+    scene.add( light );
+
+	sun = new THREE.DirectionalLight( 0xffffff, 1);
+	sun.position.set( 0,4,1 );//0,4,1 
+    //sun.rotation.z=Math.PI/2;
+	sun.castShadow = true;
+	scene.add(sun);
+	//Set up shadow properties for the sun light
+	sun.shadow.mapSize.width = 256;
+	sun.shadow.mapSize.height = 256;
+	sun.shadow.camera.near = 0.5;
+	sun.shadow.camera.far = 50 ;
+	
+	/*orbitControl = new THREE.OrbitControls( camera, renderer.domElement );//helper to rotate around in scene
+	orbitControl.addEventListener( 'change', render );
+	//orbitControl.enableDamping = true;
+	//orbitControl.dampingFactor = 0.8;
+	orbitControl.enableZoom = false;
+	*/
+	//var helper = new THREE.CameraHelper( sun.shadow.camera );
+	//scene.add( helper );// enable to see the light cone
+	
+	window.addEventListener('resize', onWindowResize, false);//resize callback
+}
+
+function update(){
+    //animate
+    //avtivka.rotation.x += 0.01;
+    //avtivka.rotation.y += 0.01;
+    if(avtivka.position.x>100)avtivka.position.x=0;
+    else avtivka.position.x+=0.3;
+    moving_scene.position.x -= velocity;//0.01;
+    if( moving_scene.position.x<-50)moving_scene.position.x=100;
+    if( moving_scene.position.x>100)moving_scene.position.x=-50;
+    render();
+	requestAnimationFrame(update);//request next update
+}
+
+function render(){
+    renderer.render(scene, camera);//draw
+}
+
+function onWindowResize() {
+	//resize & align
+	sceneHeight = window.innerHeight;
+	sceneWidth = window.innerWidth;
+	renderer.setSize(sceneWidth, sceneHeight);
+	camera.aspect = sceneWidth/sceneHeight;
+	camera.updateProjectionMatrix();
+}
+
+function handleKeyDown(keyEvent){
+	if ( keyEvent.keyCode === 38 && velocity<0.3){//up
+		velocity += 0.01;
+	}
+    if ( keyEvent.keyCode === 40 && velocity>-0.3){//down
+		velocity -= 0.01;
+	}
+}
+
+function createavto(vertices){
+    //vertices[0].x=2;vertices[1].x=2;
+    vertices[1].x=2;vertices[3].x=2;
+    koleso1=createkoleso(0.1,0.01,0,-0.5);koleso2=createkoleso(0.1,0.01,0,0.5);koleso3=createkoleso(0.1,0.01,1.5,-0.5);koleso4=createkoleso(0.1,0.01,1.5,0.5);
+    var avto =new THREE.Object3D();
+    avto.add(hero);     avto.add(koleso1);    avto.add(koleso2);    avto.add(koleso3);    avto.add(koleso4);
+    return avto;
+}
+
+function createkoleso(radius,height,x,y){
+    var kolesoGeometry = new THREE.CylinderGeometry( radius, radius, height );
+    var kolesoMaterial = new THREE.MeshStandardMaterial( { color: 0x333333  } );
+    var koleso = new THREE.Mesh( kolesoGeometry, kolesoMaterial );
+    koleso.position.x=x;koleso.position.y=y;koleso.position.z=-0.5;
+    return koleso;
+}
+
+function createhouse(x){
+    var houseGeometry = new THREE.BoxGeometry( 5, 5, 1 );//Дом
+	var houseMaterial = new THREE.MeshStandardMaterial( { color: 0xff4400 } );
+	house = new THREE.Mesh( houseGeometry, houseMaterial );
+    house.position.x=x; house.position.y=2.5; house.position.z=1.5;
+    return house;
+}
+</script>
