@@ -1381,6 +1381,7 @@ function hide_run(){
     onmousedown="mymousedown=true;ipredpred=iteku;jpredpred=jteku;clicknuli(iteku,jteku);" 
     onmouseup="mymousedown=false;"
     onmousemove="draw3x3();ipred=iteku;jpred=jteku;iteku=Math.floor(event.pageX/30)>=0?Math.floor(event.pageX/30):0;jteku=Math.floor(event.pageY/20)-1;
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {iteku--;jteku--;jteku--;}//(телефон или планшет)
 		draw_block(iteku,jteku,teku_block,'lightblue');if(mymousedown && (iteku!=ipred || jteku!=jpred)){if(mode=='edit')draw_link();ipredpred=ipred;jpredpred=jpred;}"></canvas>
     <script>
     var canvas = document.getElementById('tutorial'); if (canvas.getContext) {var ctx = canvas.getContext('2d');}
