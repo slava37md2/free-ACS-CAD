@@ -400,7 +400,7 @@ function draw_block(i,j,block,color) {
 	      for(t=0;t<Tnadt;t++){if(xmax<bloki[k].X[t])xmax=bloki[k].X[t];if(xmin>bloki[k].X[t])xmin=bloki[k].X[t];}
 	      ctx.moveTo(i*30,j*20+60-60*(0-xmin)/(xmax-xmin));ctx.lineTo(i*30+90,j*20+60-60*(0-xmin)/(xmax-xmin));//рисуем ось x
 	      ctx.moveTo(i*30,j*20+60);
-          ti=Math.floor(Tnadt/90);
+          ti=Math.floor(Tnadt/90);if(ti<1)ti=1;
 	      for(t=0;t<Tnadt;t=t+ti)ctx.lineTo(i*30+t*90/Tnadt,j*20+60-60*(bloki[k].X[t]-xmin)/(xmax-xmin));
 	    }
 	  }else{
@@ -433,7 +433,7 @@ function draw_block(i,j,block,color) {
 	      ctx.moveTo(i*30+90*(0-xmin)/(xmax-xmin),j*20);ctx.lineTo(i*30+90*(0-xmin)/(xmax-xmin),j*20+60);//рисуем ось y
 	      ctx.moveTo(i*30,j*20+60-60*(0-ymin)/(ymax-ymin));ctx.lineTo(i*30+90,j*20+60-60*(0-ymin)/(ymax-ymin));//рисуем ось x
 	      ctx.moveTo(i*30+90*(blokik.X[1]-xmin)/(xmax-xmin),j*20+60-60*(blokik.X[1]-blokik.X[0]-ymin)/(ymax-ymin));
-	      ti=Math.floor(Tnadt/180);//Так как почему-то когда точек слишком много линии не отрисовываются, то увеличиваем t не на 1, а на большую величину
+	      ti=Math.floor(Tnadt/180);if(ti<1)ti=1;//Так как почему-то когда точек слишком много линии не отрисовываются, то увеличиваем t не на 1, а на большую величину
           for(t=1;t<Tnadt;t=t+ti)ctx.lineTo(i*30+90*(blokik.X[t]-xmin)/(xmax-xmin),j*20+60-60*(blokik.X[t]-blokik.X[t-1]-ymin)/(ymax-ymin));
 	    }
 	  }else{
@@ -797,7 +797,7 @@ function create_block(i6,j6,block6){
 	      for(t=0;t<Tnadt;t++){if(xmax<this.X[t])xmax=this.X[t];if(xmin>this.X[t])xmin=this.X[t];}
 	      ctx.moveTo(0,650-650*(0-xmin)/(xmax-xmin));ctx.lineTo(1500,650-650*(0-xmin)/(xmax-xmin));//рисуем ось x
 	      ctx.moveTo(0,650);
-          ti=Math.floor(Tnadt/1500);
+          ti=Math.floor(Tnadt/1500);if(ti<1)ti=1;
 	      for(t=0;t<Tnadt;t=t+ti)ctx.lineTo(t*1500/Tnadt,650-650*(this.X[t]-xmin)/(xmax-xmin));
 	  
 	      ctx.stroke();
@@ -824,7 +824,7 @@ function create_block(i6,j6,block6){
 	      ctx.moveTo(1500*(0-xmin)/(xmax-xmin),0);ctx.lineTo(1500*(0-xmin)/(xmax-xmin),650);//рисуем ось x
 	      ctx.moveTo(0,650-650*(0-ymin)/(ymax-ymin));ctx.lineTo(1500,650-650*(0-ymin)/(ymax-ymin));//рисуем ось y
 	      ctx.moveTo(1500*(blokik.X[1]-xmin)/(xmax-xmin),650-650*(blokik.X[1]-blokik.X[0]-ymin)/(ymax-ymin));
-          ti=Math.floor(Tnadt/1500);
+          ti=Math.floor(Tnadt/1500);if(ti<1)ti=1;
 	      for(t=1;t<Tnadt;t=t+ti)ctx.lineTo(1500*(blokik.X[t]-xmin)/(xmax-xmin),650-650*((blokik.X[t]-blokik.X[t-1])/dt-ymin)/(ymax-ymin));
 	  
 	      ctx.moveTo(14,6);ctx.lineTo(16,6);//рисуем точку над x
