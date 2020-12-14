@@ -322,7 +322,7 @@ function draw_block(i,j,block,color) {
         
   case 41://'differentsiator':  
 	  ctx.font = '16px serif';
-	  ctx.fillText('p', i*30+40, j*20+35);
+	  ctx.fillText('s', i*30+40, j*20+35);
   break;
     
   case 42://'K_s_ogranicheniem':  
@@ -460,7 +460,7 @@ function draw_block(i,j,block,color) {
   case 70://'inertsionnoe_zveno':  
 	  ctx.font = '16px serif';
 	  ctx.fillText('K', i*30+40, j*20+25);
-	  ctx.fillText('Tp+1', i*30+28, j*20+47);
+	  ctx.fillText('Ts+1', i*30+28, j*20+47);
 	  ctx.beginPath();
 	  ctx.moveTo(i*30+20,j*20+30);
 	  ctx.lineTo(i*30+70,j*20+30);
@@ -470,7 +470,7 @@ function draw_block(i,j,block,color) {
   case 71://'integrator':  
 	  ctx.font = '16px serif';
 	  ctx.fillText('K', i*30+40, j*20+25);
-	  ctx.fillText('p', i*30+40, j*20+45);
+	  ctx.fillText('s', i*30+40, j*20+45);
 	  ctx.beginPath();
 	  ctx.moveTo(i*30+20,j*20+30);
 	  ctx.lineTo(i*30+70,j*20+30);
@@ -480,7 +480,7 @@ function draw_block(i,j,block,color) {
   case 72://'kolebatelnoe_zveno':  
 	  ctx.font = '16px serif';
 	  ctx.fillText('K', i*30+40, j*20+25);
-	  ctx.fillText('ap +bp+1', i*30+18, j*20+47);
+	  ctx.fillText('as +bs+1', i*30+18, j*20+47);
 	  ctx.font = '10px serif';
 	  ctx.fillText('2', i*30+33, j*20+40);
 	  ctx.beginPath();
@@ -492,7 +492,7 @@ function draw_block(i,j,block,color) {
     case 73://'zveno_3go_poriadka':  
 	  ctx.font = '15px serif';
 	  ctx.fillText('K', i*30+40, j*20+25);
-	  ctx.fillText('ap +bp +cp+1', i*30+3, j*20+47);
+	  ctx.fillText('as +bs +cs+1', i*30+3, j*20+47);
 	  ctx.font = '10px serif';
 	  ctx.fillText('3', i*30+16, j*20+40);
 	  ctx.fillText('2', i*30+44, j*20+40);
