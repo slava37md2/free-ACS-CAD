@@ -1180,8 +1180,8 @@ function raschiot(){
   draw();
 }
 function save_scheme_in_localStorage(){
-	localStorage.setItem("T", T);
-	localStorage.setItem("Δt", dt);
+	localStorage.setItem("s"+sch+"T", T);
+	localStorage.setItem("s"+sch+"Δt", dt);
 	for(i=0;i<50;i++)//50
 	    for(j=0;j<=31;j++){//50
 	      mij=matrix[i][j];
@@ -1197,10 +1197,11 @@ function save_scheme_in_localStorage(){
 	   bloki[k].save_parameters_in_localStorage();
 }
 function read_scheme_from_localStorage(){
-	T=localStorage.getItem("T");//T=null;
-	if(T==null){ T=10; create_block(1,2,90);create_block(5,3,31);create_block(7,2,70);create_block(11,2,71);create_block(16,2,67);create_block(9,6,40);
+	T=localStorage.getItem("s"+sch+"T");//T=null;
+	if(T==null && sch==0){ T=10; create_block(1,2,90);create_block(5,3,31);create_block(7,2,70);create_block(11,2,71);create_block(16,2,67);create_block(9,6,40);
 		create_block(1,12,90);create_block(5,12,70);create_block(9,12,67);return;}
-	dt=localStorage.getItem("Δt");
+	dt=localStorage.getItem("s"+sch+"Δt");
+    if(T==null && dt==null){ T=10; dt=0.01; }
 	for(i=0;i<50;i++)//50
 	    for(j=0;j<=31;j++){//50
             //matrix[i][j]=0;
