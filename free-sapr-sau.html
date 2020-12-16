@@ -621,17 +621,21 @@ function udaliti_block(i3,j3){
     if(matrix[i3][j3]==matrix[i3-1][j3] && matrix[i3][j3]==matrix[i3-2][j3])ilev=i3-2;
     if(matrix[i3][j3]==matrix[i3][j3-1])jverh=j3-1;
     if(matrix[i3][j3]==matrix[i3][j3-1] && matrix[i3][j3]==matrix[i3][j3-2])jverh=j3-2;
-    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[ilev][jverh] && bloki[k].i==ilev && bloki[k].j==jverh){ delete bloki[k];
-      for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
-    }
+    for(k=1;k<=kolvo_blokov;k++)
+        if(bloki[k].blocktype==matrix[ilev][jverh] && bloki[k].i==ilev && bloki[k].j==jverh){
+            bloki[k].remove_parameters_from_localStorage();
+            delete bloki[k];
+            for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
+        }
     kolvo_blokov--;
     for(i4=ilev;i4<=ilev+2;i4++)for(j4=jverh;j4<=jverh+2;j4++)matrix[i4][j4]=0;
   }
   if(matrix[i3][j3]>=30 && matrix[i3][j3]<=33){
-    for(k=1;k<=kolvo_blokov;k++)if(bloki[k].blocktype==matrix[i3][j3] && bloki[k].i==i3 && bloki[k].j==j3){ 
-      delete bloki[k];
-      for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
-    }
+    for(k=1;k<=kolvo_blokov;k++)
+        if(bloki[k].blocktype==matrix[i3][j3] && bloki[k].i==i3 && bloki[k].j==j3){
+            delete bloki[k];
+            for(k1=k;k1<=kolvo_blokov-1;k1++)bloki[k1]=bloki[k1+1];
+        }
     kolvo_blokov--;
     matrix[i3][j3]=0;
   }
@@ -639,7 +643,7 @@ function udaliti_block(i3,j3){
 
 function clicknuli(i1,j1){
   if(mode=='edit'){
-	  if(j1>29){teku_block=matrix[i1][j1];draw();draw_block(i1,j1,teku_block,'lightblue');}
+	  if(j1>31){teku_block=matrix[i1][j1];draw();draw_block(i1,j1,teku_block,'lightblue');}
 	  if((j1<=29 && teku_block>=40) || (j1<=31 && teku_block<40)){ 
 		if(teku_block<30){ udaliti_block(i1,j1); matrix[i1][j1]=teku_block;}
 		if(teku_block<=33 && teku_block>=30){ 
@@ -653,7 +657,7 @@ function clicknuli(i1,j1){
 		  create_block(i1,j1,teku_block);
 		}
 		save_scheme_in_localStorage();
-	     }
+      }
 	  if(j1<=29)draw();
   }
   
@@ -692,6 +696,7 @@ function create_block(i6,j6,block6){
   blok.draw_parameters = function(k){ }
   blok.save_parameters_in_localStorage = function(){ }
   blok.read_parameters_from_localStorage = function(){ }
+  blok.remove_parameters_from_localStorage = function(){ }
   switch(block6) {
   case 30:
 	blok.vhodniz = 0;
@@ -727,8 +732,9 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('№'+k, 50*k+50, 665);
 	  ctx.fillText('K='+this.K, 50*k+50, 680);
 	}
-	blok.save_parameters_in_localStorage = function(){ localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K); }
-	blok.read_parameters_from_localStorage = function(){ this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" )); }
+	blok.save_parameters_in_localStorage = function(){ localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"K", this.K); }
+	blok.read_parameters_from_localStorage = function(){ this.K=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"K" )); }
+    blok.remove_parameters_from_localStorage = function(){ localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"K" ); }
   break;
   
   case 41://differentsiator
@@ -760,15 +766,20 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('d='+this.d, 50*k+50, 740);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
-		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
-		localStorage.setItem("i"+this.i+"j"+this.j+"c", this.c);
-		localStorage.setItem("i"+this.i+"j"+this.j+"d", this.d);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"c", this.c);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"d", this.d);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
-		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
-		this.c=Number(localStorage.getItem("i"+this.i+"j"+this.j+"c" ));
-		this.d=Number(localStorage.getItem("i"+this.i+"j"+this.j+"d" ));}
+		this.a=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"b" ));
+		this.c=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"c" ));
+		this.d=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"d" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"a" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"b" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"c" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"d" ); }
   break;
   
   case 43://'ogranichenie'
@@ -786,11 +797,14 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('b='+this.b, 50*k+50, 700);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
-		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"b", this.b);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
-		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));}
+		this.a=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"b" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"a" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"b" ); }
   break;
   
   case 44://"as_plus_1_del_na_Ts_plus_1"
@@ -812,13 +826,17 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('ss='+this.start_state, 50*k+50, 720);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
-		localStorage.setItem("i"+this.i+"j"+this.j+"T", this.T);
-		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"T", this.T);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"ss", this.start_state);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
-		this.T=Number(localStorage.getItem("i"+this.i+"j"+this.j+"T" ));
-		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+		this.a=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"a" ));
+		this.T=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"T" ));
+		this.start_state=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"a" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"T" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   case 67://Xott
 	blok.X = [];
@@ -894,13 +912,17 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('ss='+this.start_state, 50*k+50, 720);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
-		localStorage.setItem("i"+this.i+"j"+this.j+"T", this.T);
-		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"T", this.T);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"ss", this.start_state);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
-		this.T=Number(localStorage.getItem("i"+this.i+"j"+this.j+"T" ));
-		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+		this.K=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"K" ));
+		this.T=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"T" ));
+		this.start_state=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"K" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"T" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
   case 71://"integrator"
@@ -918,11 +940,14 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('ss='+this.start_state, 50*k+50, 700);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
-		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"ss", this.start_state);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
-		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+		this.K=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"K" ));
+		this.start_state=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"K" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
   case 72:
@@ -947,15 +972,20 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('ss='+this.start_state, 50*k+50, 740);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
-		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
-		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
-		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"ss", this.start_state);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
-		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
-		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
-		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+		this.K=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"K" ));
+		this.a=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"b" ));
+		this.start_state=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"K" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"a" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"b" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
     case 73:
@@ -986,17 +1016,23 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('ss='+this.start_state, 50*k+50, 760);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"K", this.K);
-		localStorage.setItem("i"+this.i+"j"+this.j+"a", this.a);
-		localStorage.setItem("i"+this.i+"j"+this.j+"b", this.b);
-		localStorage.setItem("i"+this.i+"j"+this.j+"c", this.c);
-		localStorage.setItem("i"+this.i+"j"+this.j+"ss", this.start_state);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"K", this.K);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"a", this.a);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"b", this.b);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"c", this.c);
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"ss", this.start_state);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.K=Number(localStorage.getItem("i"+this.i+"j"+this.j+"K" ));
-		this.a=Number(localStorage.getItem("i"+this.i+"j"+this.j+"a" ));
-		this.b=Number(localStorage.getItem("i"+this.i+"j"+this.j+"b" ));
-		this.c=Number(localStorage.getItem("i"+this.i+"j"+this.j+"c" ));
-		this.start_state=Number(localStorage.getItem("i"+this.i+"j"+this.j+"ss" ));}
+		this.K=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"K" ));
+		this.a=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"a" ));
+		this.b=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"b" ));
+		this.c=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"c" ));
+		this.start_state=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"K" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"a" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"b" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"c" );
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
   case 90:
@@ -1010,9 +1046,11 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('C='+this.C, 50*k+50, 680);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"C", this.C);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"C", this.C);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.C=Number(localStorage.getItem("i"+this.i+"j"+this.j+"C" ));}
+		this.C=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"C" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"C" ); }
   break;
   
   case 91:
@@ -1026,9 +1064,11 @@ function create_block(i6,j6,block6){
 	  ctx.fillText('A='+this.A, 50*k+50, 680);
 	}
 	blok.save_parameters_in_localStorage = function(){ 
-		localStorage.setItem("i"+this.i+"j"+this.j+"A", this.A);}
+		localStorage.setItem("s"+sch+"i"+this.i+"j"+this.j+"A", this.A);}
 	blok.read_parameters_from_localStorage = function(){ 
-		this.A=Number(localStorage.getItem("i"+this.i+"j"+this.j+"A" ));}
+		this.A=Number(localStorage.getItem("s"+sch+"i"+this.i+"j"+this.j+"A" ));}
+    blok.remove_parameters_from_localStorage = function(){ 
+        localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"A" ); }
   break;
   
     case 92:
@@ -1143,14 +1183,15 @@ function save_scheme_in_localStorage(){
 	localStorage.setItem("T", T);
 	localStorage.setItem("Δt", dt);
 	for(i=0;i<50;i++)//50
-	    for(j=0;j<50;j++){//50
+	    for(j=0;j<=31;j++){//50
 	      mij=matrix[i][j];
 	      //if(mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
 	      // && mij==matrix[i][j+2] && mij==matrix[i+1][j+2] && mij==matrix[i+2][j+2]){
-		localStorage.setItem("i"+i+"j"+j, mij);
+        if( mij != 0 ) localStorage.setItem("s"+sch+"i"+i+"j"+j, mij);
+        else localStorage.removeItem("s"+sch+"i"+i+"j"+j);
 	      //}
 	      //if(mij<=33)
-	      //  localStorage.setItem("i"+i+"j"+j, mij);
+	      //  localStorage.setItem("s"+sch+"i"+i+"j"+j, mij);
 	   }
 	for(k=1;k<=kolvo_blokov;k++)
 	   bloki[k].save_parameters_in_localStorage();
@@ -1161,11 +1202,13 @@ function read_scheme_from_localStorage(){
 		create_block(1,12,90);create_block(5,12,70);create_block(9,12,67);return;}
 	dt=localStorage.getItem("Δt");
 	for(i=0;i<50;i++)//50
-	    for(j=0;j<=29;j++)//50
-	      matrix[i][j]=Number(localStorage.getItem("i"+i+"j"+j));
+	    for(j=0;j<=31;j++){//50
+            //matrix[i][j]=0;
+	        matrix[i][j]=Number(localStorage.getItem("s"+sch+"i"+i+"j"+j));
+        }
 	      
 	for(i=0;i<50;i++)//50
-	    for(j=0;j<50;j++){//50
+	    for(j=0;j<=31;j++){//50
 	      mij=matrix[i][j];
 	      if(j<=29 && mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
 	       && mij==matrix[i][j+2] && mij==matrix[i+1][j+2] && mij==matrix[i+2][j+2]
@@ -1404,14 +1447,26 @@ function hide_run(){
     </style>
   </head>
   <body onload="read_scheme_from_localStorage();draw();"><!--http://w3.org.ua/js/pishem-menyu-na-java-script/-->
-  
 
-  
 
-    
-    
-    
-  <!--a href="" onclick="">file</a--> <a href="javascript:void(0);" onclick="mode='edit';hide_run();byl_raschiot=false;draw();">edit</a> | 
+
+
+
+
+
+<select id="select" onchange="save_scheme_in_localStorage();sch=this.selectedIndex;mode='edit';hide_run();byl_raschiot=false;for(k=1;k<=kolvo_blokov;k++) delete bloki[k];kolvo_blokov=0; localStorage.setItem('sch', sch);read_scheme_from_localStorage();draw();">
+<option>scheme №0</option><option>scheme №1</option><option>scheme №2</option><option>scheme №3</option><option>scheme №4</option>
+<option>scheme №5</option><option>scheme №6</option><option>scheme №7</option><option>scheme №8</option><option>scheme №9</option>
+<option>scheme №10</option><option>scheme №11</option><option>scheme №12</option><option>scheme №13</option><option>scheme №14</option>
+<option>scheme №15</option><option>scheme №16</option><option>scheme №17</option><option>scheme №18</option><option>scheme №19</option>
+<option>scheme №20</option><option>scheme №21</option><option>scheme №22</option><option>scheme №23</option><option>scheme №24</option>
+<option>scheme №25</option><option>scheme №26</option><option>scheme №27</option><option>scheme №28</option><option>scheme №29</option>
+<option>scheme №30</option><option>scheme №31</option><option>scheme №32</option><option>scheme №33</option><option>scheme №34</option>
+<option>scheme №35</option><option>scheme №36</option><option>scheme №37</option><option>scheme №38</option><option>scheme №39</option>
+<option>scheme №40</option><option>scheme №41</option><option>scheme №42</option><option>scheme №43</option><option>scheme №44</option>
+<option>scheme №45</option><option>scheme №46</option><option>scheme №47</option><option>scheme №48</option><option>scheme №49</option>
+</select> | 
+  <a href="javascript:void(0);" onclick="mode='edit';hide_run();byl_raschiot=false;draw();">edit</a> | 
   <a href="javascript:void(0);" onclick="naidena_oshibka=false; naiti_matr_sviazei(); 
   if(!naidena_oshibka){mode='solve';show_run();save_scheme_in_localStorage();} draw(); teku_block=0;">solve</a> <b id="run"></b><br>
     <canvas id="tutorial" width="1500" height="1000" 
@@ -1425,6 +1480,7 @@ function hide_run(){
     var teku_block=0;var iteku,jteku,ipred,jpred,ipredpred,jpredpred; var mymousedown; var mode='edit'; var kolvo_blokov=-1; var bloki=[]; var matr_sviazei = []; var k2, naidena_oshibka=false, ioshibki, joshibki;
     var T=10,dt=0.01,t; var byl_raschiot=false;
     create_block(-3,-3,90);bloki[0].C=0;
+    var sch = Number(localStorage.getItem("sch")); select.selectedIndex = sch;
     </script> 
     <!--br>В режиме редактора(edit) экран - розового цвета, в режиме расчёта и ввода параметров(solve) - экран белого цвета.
     <br>Линия связи должна заканчиваться стрелкой.
