@@ -57,6 +57,24 @@
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
+    function set_start_scheme(){
+      for(i=0;i<50;i++)//50
+	    for(j=0;j<32;j++)//50
+	      matrix[i][j]=0;
+
+      full3x3(1,2,90);matrix[4][3]=15;matrix[5][3]=31;matrix[6][3]=15;matrix[5][4]=14;matrix[5][5]=2;matrix[5][6]=2;matrix[5][7]=5;matrix[6][7]=1;matrix[7][7]=1;matrix[8][7]=1;
+      full3x3(9,6,40);matrix[12][7]=16;matrix[13][7]=1;matrix[14][7]=10;matrix[15][7]=15;matrix[14][6]=2;matrix[14][5]=2;matrix[14][4]=2;matrix[14][3]=9;matrix[15][3]=15;
+      full3x3(16,2,67);full3x3(16,6,68);
+      full3x3(7,2,70);matrix[10][3]=15;
+      full3x3(11,2,71);
+
+      full3x3(1,12,90);matrix[4][13]=15;full3x3(5,12,70);matrix[8][13]=15;full3x3(9,12,67);
+    }
+      function full3x3(x,y,cod) {
+        for(i=x;i<x+3;i++)
+	     for(j=y;j<y+3;j++)
+	      matrix[i][j]=cod;
+      }
 
       function draw() {
           if(mode=='edit')jmax=50;else{ jmax=32; ctx.fillStyle = "white"; ctx.fillRect(0, 650, 1500, 1000);
@@ -1196,19 +1214,8 @@ function save_scheme_in_localStorage(){
 	for(k=1;k<=kolvo_blokov;k++)
 	   bloki[k].save_parameters_in_localStorage();
 }
-function read_scheme_from_localStorage(){
-	T=localStorage.getItem("s"+sch+"T");//T=null;
-	if(T==null && sch==0){ T=10; create_block(1,2,90);create_block(5,3,31);create_block(7,2,70);create_block(11,2,71);create_block(16,2,67);create_block(9,6,40);
-		create_block(1,12,90);create_block(5,12,70);create_block(9,12,67);return;}
-	dt=localStorage.getItem("s"+sch+"Δt");
-    if(T==null && dt==null){ T=10; dt=0.01; }
-	for(i=0;i<50;i++)//50
-	    for(j=0;j<=31;j++){//50
-            //matrix[i][j]=0;
-	        matrix[i][j]=Number(localStorage.getItem("s"+sch+"i"+i+"j"+j));
-        }
-	      
-	for(i=0;i<50;i++)//50
+function create_all_blocks(){
+      for(i=0;i<50;i++)//50
 	    for(j=0;j<=31;j++){//50
 	      mij=matrix[i][j];
 	      if(j<=29 && mij>=40 && mij==matrix[i+1][j] && mij==matrix[i+2][j] && mij==matrix[i][j+1] && mij==matrix[i+1][j+1] && mij==matrix[i+2][j+1]
@@ -1216,9 +1223,33 @@ function read_scheme_from_localStorage(){
 	       || j<=31 && mij<=33 && mij>=30 )
 	       create_block(i,j,mij);
 	    }
+}
+function read_scheme_from_localStorage(){
+	T=localStorage.getItem("s"+sch+"T");//T=null;
+	//if(T==null && sch==0){ T=10; create_block(1,2,90);create_block(5,3,31);create_block(7,2,70);create_block(11,2,71);create_block(16,2,67);create_block(16,6,68);create_block(9,6,40);
+	//	create_block(1,12,90);create_block(5,12,70);create_block(9,12,67);return;}
+	dt=localStorage.getItem("s"+sch+"Δt");
+    if(dt==null){
+      set_start_scheme();dt=0.01;
+      create_all_blocks();
+      for(k=1;k<=kolvo_blokov;k++)
+	    bloki[k].save_parameters_in_localStorage();
+    }else{    
+	  for(i=0;i<50;i++)//50
+	    for(j=0;j<=31;j++){//50
+            //matrix[i][j]=0;
+	        matrix[i][j]=Number(localStorage.getItem("s"+sch+"i"+i+"j"+j));
+        }
+      create_all_blocks();
+      for(k=1;k<=kolvo_blokov;k++)
+	    bloki[k].read_parameters_from_localStorage();
+    }
+
+	if( T==null ){ T=10; }
+
+	
 	       
-	for(k=1;k<=kolvo_blokov;k++)
-	   bloki[k].read_parameters_from_localStorage();
+
 }
 
 
@@ -1452,10 +1483,11 @@ function hide_run(){
 
 
 
+  <a href="javascript:void(0);" onclick="mode='edit';hide_run();byl_raschiot=false;for(k=1;k<=kolvo_blokov;k++){ bloki[k].remove_parameters_from_localStorage();delete bloki[k];} kolvo_blokov=0;set_start_scheme();dt=0.01;
+      create_all_blocks(); for(k=1;k<=kolvo_blokov;k++) bloki[k].save_parameters_in_localStorage(); draw();">reset the scheme</a> | 
 
 
-
-<select id="select" onchange="save_scheme_in_localStorage();sch=this.selectedIndex;mode='edit';hide_run();byl_raschiot=false;for(k=1;k<=kolvo_blokov;k++) delete bloki[k];kolvo_blokov=0; localStorage.setItem('sch', sch);read_scheme_from_localStorage();draw();">
+choose the scheme:<select id="select" onchange="save_scheme_in_localStorage();sch=this.selectedIndex;mode='edit';hide_run();byl_raschiot=false;for(k=1;k<=kolvo_blokov;k++) delete bloki[k];kolvo_blokov=0; localStorage.setItem('sch', sch);read_scheme_from_localStorage();draw();">
 <option>scheme №0</option><option>scheme №1</option><option>scheme №2</option><option>scheme №3</option><option>scheme №4</option>
 <option>scheme №5</option><option>scheme №6</option><option>scheme №7</option><option>scheme №8</option><option>scheme №9</option>
 <option>scheme №10</option><option>scheme №11</option><option>scheme №12</option><option>scheme №13</option><option>scheme №14</option>
