@@ -9,4 +9,6 @@ Type the scheme in the editor, press solve, set the time T, the calculation step
 To enter parameters, in solve mode, move the cursor to the block and click. 
 To increase the graph, in the solve mode, after the calculation, move the cursor over it and click with the mouse. 
 
+https://slava37md2.github.io/free-ACS-CAD/free-sapr-sau.html
+
 Apache License v2.0
