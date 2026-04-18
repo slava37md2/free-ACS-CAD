@@ -62,6 +62,13 @@
 	    for(j=0;j<32;j++)//50
 	      matrix[i][j]=0;
 
+  switch(sch) {
+
+  case 1://PID-regulator
+      full3x3(2,7,90);matrix[5][8]=15;matrix[6][8]=31;matrix[6][9]=14;matrix[6][10]=2;matrix[6][11]=2;matrix[6][12]=2;matrix[6][13]=2;matrix[6][14]=2;matrix[6][15]=2;matrix[6][16]=2;matrix[6][17]=2;matrix[6][18]=5;matrix[7][8]=1;matrix[7][18]=1;matrix[8][4]=6;matrix[8][5]=2;matrix[8][6]=2;matrix[8][7]=2;matrix[8][8]=8;matrix[8][9]=2;matrix[8][10]=2;matrix[8][11]=2;matrix[8][12]=5;matrix[8][18]=1;matrix[9][4]=15;matrix[9][8]=15;matrix[9][12]=15;matrix[9][18]=1;full3x3(10,3,40);full3x3(10,7,71);full3x3(10,11,41);matrix[10][18]=1;matrix[11][18]=1;matrix[12][18]=1;matrix[13][4]=1;matrix[13][8]=1;matrix[13][12]=15;matrix[13][18]=1;matrix[14][4]=1;matrix[14][8]=15;full3x3(14,11,40);full3x3(14,17,40);matrix[15][4]=4;matrix[15][5]=2;matrix[15][6]=2;matrix[15][7]=13;matrix[15][8]=30;matrix[15][9]=14;matrix[15][10]=2;matrix[16][8]=1;matrix[17][8]=15;matrix[17][18]=16;full3x3(18,7,72);matrix[18][18]=1;matrix[19][18]=1;matrix[20][18]=1;matrix[21][8]=15;matrix[21][18]=1;full3x3(22,7,73);matrix[22][18]=1;matrix[23][18]=1;matrix[24][18]=1;matrix[25][8]=9;matrix[25][9]=2;matrix[25][10]=2;matrix[25][11]=2;matrix[25][12]=2;matrix[25][13]=2;matrix[25][14]=2;matrix[25][15]=2;matrix[25][16]=2;matrix[25][17]=2;matrix[25][18]=3;matrix[26][8]=15;full3x3(27,7,67);
+    break;
+    
+  default:
       full3x3(1,2,90);matrix[4][3]=15;matrix[5][3]=31;matrix[6][3]=15;matrix[5][4]=14;matrix[5][5]=2;matrix[5][6]=2;matrix[5][7]=5;matrix[6][7]=1;matrix[7][7]=1;matrix[8][7]=1;
       full3x3(9,6,40);matrix[12][7]=16;matrix[13][7]=1;matrix[14][7]=10;matrix[15][7]=15;matrix[14][6]=2;matrix[14][5]=2;matrix[14][4]=2;matrix[14][3]=9;matrix[15][3]=15;
       full3x3(16,2,67);full3x3(16,6,68);
@@ -70,6 +77,7 @@
 
       full3x3(1,12,90);matrix[4][13]=15;full3x3(5,12,70);matrix[8][13]=15;full3x3(9,12,67);
     }
+}
       function full3x3(x,y,cod) {
         for(i=x;i<x+3;i++)
 	     for(j=y;j<y+3;j++)
@@ -1535,5 +1543,8 @@ choose the scheme:<select id="select" onchange="save_scheme_in_localStorage();sc
     <br>You can have 50 schemes. They are stored in the localStorage of the browser.
     <br><br>Apache License v2.0 
     <br><a href="https://github.com/slava37md2/free-ACS-CAD">https://github.com/slava37md2/free-ACS-CAD</a> 
+    <br><a href="javascript:void(0);" onclick="schema=''; for(i=0;i<50;i++)  for(j=0;j<32;j++) { if( matrix[i][j]<=33 && matrix[i][j]>=1 )schema=schema+'matrix['+i+']['+j+']='+matrix[i][j]+';'; 
+      if( matrix[i][j]>=40 && matrix[i][j]==matrix[i+1][j+1] && matrix[i][j]==matrix[i+2][j+2])schema=schema+'full3x3('+i+','+j+','+matrix[i][j]+');';}
+      alert(schema)">.</a> 
   </body>
 </html>
