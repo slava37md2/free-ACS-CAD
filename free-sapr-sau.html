@@ -65,9 +65,11 @@
   switch(sch) {
 
   case 1://PID-regulator
-      full3x3(2,7,90);matrix[5][8]=15;matrix[6][8]=31;matrix[6][9]=14;matrix[6][10]=2;matrix[6][11]=2;matrix[6][12]=2;matrix[6][13]=2;matrix[6][14]=2;matrix[6][15]=2;matrix[6][16]=2;matrix[6][17]=2;matrix[6][18]=5;matrix[7][8]=1;matrix[7][18]=1;matrix[8][4]=6;matrix[8][5]=2;matrix[8][6]=2;matrix[8][7]=2;matrix[8][8]=8;matrix[8][9]=2;matrix[8][10]=2;matrix[8][11]=2;matrix[8][12]=5;matrix[8][18]=1;matrix[9][4]=15;matrix[9][8]=15;matrix[9][12]=15;matrix[9][18]=1;full3x3(10,3,40);full3x3(10,7,71);full3x3(10,11,41);matrix[10][18]=1;matrix[11][18]=1;matrix[12][18]=1;matrix[13][4]=1;matrix[13][8]=1;matrix[13][12]=15;matrix[13][18]=1;matrix[14][4]=1;matrix[14][8]=15;full3x3(14,11,40);full3x3(14,17,40);matrix[15][4]=4;matrix[15][5]=2;matrix[15][6]=2;matrix[15][7]=13;matrix[15][8]=30;matrix[15][9]=14;matrix[15][10]=2;matrix[16][8]=1;matrix[17][8]=15;matrix[17][18]=16;full3x3(18,7,72);matrix[18][18]=1;matrix[19][18]=1;matrix[20][18]=1;matrix[21][8]=15;matrix[21][18]=1;full3x3(22,7,73);matrix[22][18]=1;matrix[23][18]=1;matrix[24][18]=1;matrix[25][8]=9;matrix[25][9]=2;matrix[25][10]=2;matrix[25][11]=2;matrix[25][12]=2;matrix[25][13]=2;matrix[25][14]=2;matrix[25][15]=2;matrix[25][16]=2;matrix[25][17]=2;matrix[25][18]=3;matrix[26][8]=15;full3x3(27,7,67);
+      full3x3(2,7,90);full3x3(2,23,90);matrix[5][8]=15;matrix[5][24]=15;matrix[6][8]=31;matrix[6][9]=14;matrix[6][10]=2;matrix[6][11]=2;matrix[6][12]=2;matrix[6][13]=2;matrix[6][14]=2;matrix[6][15]=2;matrix[6][16]=2;matrix[6][17]=2;matrix[6][18]=5;full3x3(6,23,72);matrix[7][8]=1;matrix[7][18]=1;matrix[8][4]=6;matrix[8][5]=2;matrix[8][6]=2;matrix[8][7]=2;matrix[8][8]=8;matrix[8][9]=2;matrix[8][10]=2;matrix[8][11]=2;matrix[8][12]=5;matrix[8][18]=1;matrix[9][4]=15;matrix[9][8]=15;matrix[9][12]=15;matrix[9][18]=1;matrix[9][24]=15;full3x3(10,3,40);full3x3(10,7,71);full3x3(10,11,41);matrix[10][18]=1;full3x3(10,23,67);matrix[11][18]=1;matrix[12][18]=1;matrix[13][4]=1;matrix[13][8]=1;matrix[13][12]=15;matrix[13][18]=1;matrix[14][4]=1;matrix[14][8]=15;full3x3(14,11,40);full3x3(14,17,40);matrix[15][4]=4;matrix[15][5]=2;matrix[15][6]=2;matrix[15][7]=13;matrix[15][8]=30;matrix[15][9]=14;matrix[15][10]=2;matrix[16][8]=1;matrix[17][8]=15;matrix[17][18]=16;full3x3(18,7,72);matrix[18][18]=1;matrix[19][18]=1;matrix[20][18]=1;matrix[21][8]=1;matrix[21][18]=1;matrix[22][8]=1;matrix[22][18]=1;matrix[23][8]=1;matrix[23][18]=1;matrix[24][8]=1;matrix[24][18]=1;matrix[25][8]=9;matrix[25][9]=2;matrix[25][10]=2;matrix[25][11]=2;matrix[25][12]=2;matrix[25][13]=2;matrix[25][14]=2;matrix[25][15]=2;matrix[25][16]=2;matrix[25][17]=2;matrix[25][18]=3;matrix[26][8]=15;full3x3(27,7,67);
     break;
-    
+  case 2:
+       full3x3(1,2,90);full3x3(1,7,90);full3x3(1,12,90);matrix[4][3]=15;matrix[4][8]=15;matrix[4][13]=15;full3x3(5,2,70);full3x3(5,7,72);full3x3(5,12,73);matrix[8][3]=15;matrix[8][8]=15;matrix[8][13]=15;full3x3(9,2,67);full3x3(9,7,67);full3x3(9,12,67);
+    break;
   default:
       full3x3(1,2,90);matrix[4][3]=15;matrix[5][3]=31;matrix[6][3]=15;matrix[5][4]=14;matrix[5][5]=2;matrix[5][6]=2;matrix[5][7]=5;matrix[6][7]=1;matrix[7][7]=1;matrix[8][7]=1;
       full3x3(9,6,40);matrix[12][7]=16;matrix[13][7]=1;matrix[14][7]=10;matrix[15][7]=15;matrix[14][6]=2;matrix[14][5]=2;matrix[14][4]=2;matrix[14][3]=9;matrix[15][3]=15;
@@ -728,24 +730,28 @@ function create_block(i6,j6,block6){
 	blok.vhodniz = 0;
 	blok.vhodverh = 0;
 	blok.run = function() { this.Y = bloki[this.vhodverh].Y + bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+    blok.init = function() { this.Y = 0; }
   break;
   
   case 31:
 	blok.vhodniz = 0;
 	blok.vhodverh = 0;
 	blok.run = function() { this.Y = bloki[this.vhodverh].Y - bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+    blok.init = function() { this.Y = 0; }
   break;
   
   case 32:
 	blok.vhodniz = 0;
 	blok.vhodverh = 0;
 	blok.run = function() { this.Y = -bloki[this.vhodverh].Y + bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+    blok.init = function() { this.Y = 0; }
   break;
   
   case 33:
 	blok.vhodniz = 0;
 	blok.vhodverh = 0;
 	blok.run = function() { this.Y = -bloki[this.vhodverh].Y - bloki[this.vhodniz].Y + bloki[this.vhod].Y; }
+    blok.init = function() { this.Y = 0; }
   break;
   
   case 40:
@@ -753,6 +759,7 @@ function create_block(i6,j6,block6){
 	blok.vvod = function() { vozvr = prompt('K=', this.K); this.K = vozvr==null ? this.K : isNaN(Number(vozvr))?1:Number(vozvr); 
 				 byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
 	blok.run = function() { this.Y = this.K * bloki[this.vhod].Y; }
+    blok.init = function() { this.Y = 0; }
 	blok.draw_parameters = function(k){ 
 	  ctx.font = '15px serif';ctx.fillStyle = "black";
 	  ctx.fillText('№'+k, 50*k+50, 665);
@@ -766,7 +773,7 @@ function create_block(i6,j6,block6){
   case 41://differentsiator
 	blok.X = 0;
 	blok.run = function() { this.Y = (bloki[this.vhod].Y - this.X)/dt; this.X = bloki[this.vhod].Y; }
-	blok.init = function() { this.X = 0; }
+	blok.init = function() { this.X = 0; this.Y = 0; }
   break;
   
   case 42://'K_s_ogranicheniem'
@@ -783,6 +790,7 @@ function create_block(i6,j6,block6){
 				if(bloki[this.vhod].Y > 0){ this.Y = this.b / this.a * bloki[this.vhod].Y; return;}
 				if(bloki[this.vhod].Y > this.c){ this.Y = this.d / this.c * bloki[this.vhod].Y; return;}
 				this.Y=this.d; }
+    blok.init = function() { this.Y = 0; }
 	blok.draw_parameters = function(k){ 
 	  ctx.font = '15px serif';ctx.fillStyle = "black";
 	  ctx.fillText('№'+k, 50*k+50, 665);
@@ -816,6 +824,7 @@ function create_block(i6,j6,block6){
 				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
 	blok.run = function() { if(bloki[this.vhod].Y > 0) this.Y = this.a; 
 				else this.Y=this.b; }
+    blok.init = function() { this.Y = 0; }
 	blok.draw_parameters = function(k){ 
 	  ctx.font = '15px serif';ctx.fillStyle = "black";
 	  ctx.fillText('№'+k, 50*k+50, 665);
@@ -1014,7 +1023,7 @@ function create_block(i6,j6,block6){
         localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
-    case 73:
+    case 73://zveno_3go_poriadka
 	blok.K = 1;
 	blok.a = 1;
 	blok.b = 1;
@@ -1061,11 +1070,12 @@ function create_block(i6,j6,block6){
         localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"ss" ); }
   break;
   
-  case 90:
+  case 90://Const
 	blok.C = 1;
 	blok.vvod = function() { vozvr = prompt('C=', this.C); this.C = vozvr==null ? this.C : isNaN(Number(vozvr))?1:Number(vozvr); 
 				 byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
 	blok.run = function() { this.Y = this.C; }
+    blok.init = function() { this.Y = this.C; }
 	blok.draw_parameters = function(k){ 
 	  ctx.font = '15px serif';ctx.fillStyle = "black";
 	  ctx.fillText('№'+k, 50*k+50, 665);
@@ -1079,11 +1089,12 @@ function create_block(i6,j6,block6){
         localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"C" ); }
   break;
   
-  case 91:
+  case 91://sin
 	blok.A = 1;
 	blok.vvod = function(){ vozvr = prompt('A=', this.A); this.A = vozvr==null ? this.A : isNaN(Number(vozvr))?1:Number(vozvr);
 				byl_raschiot=false; draw(); this.save_parameters_in_localStorage();}
 	blok.run = function() { this.Y = Math.sin(this.A*t*dt); }
+    blok.init = function() { this.Y = 0; }
 	blok.draw_parameters = function(k){ 
 	  ctx.font = '15px serif';ctx.fillStyle = "black";
 	  ctx.fillText('№'+k, 50*k+50, 665);
@@ -1097,7 +1108,7 @@ function create_block(i6,j6,block6){
         localStorage.removeItem("s"+sch+"i"+this.i+"j"+this.j+"A" ); }
   break;
   
-    case 92:
+    case 92://delta
 	blok.run = function() { if(t==0) this.Y = 1; else this.Y = 0; }
   break;
   }
